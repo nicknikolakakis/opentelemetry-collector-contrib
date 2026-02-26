@@ -71,12 +71,8 @@ func TestLoadConfig(t *testing.T) {
 				},
 				MetricsBuilderConfig: func() metadata.MetricsBuilderConfig {
 					m := metadata.DefaultMetricsBuilderConfig()
-					m.Metrics.ContainerCPUUsageSystem = metadata.MetricConfig{
-						Enabled: false,
-					}
-					m.Metrics.ContainerMemoryTotalRss = metadata.MetricConfig{
-						Enabled: true,
-					}
+					m.Metrics.ContainerCPUUsageSystem.Enabled = false
+					m.Metrics.ContainerMemoryTotalRss.Enabled = true
 					return m
 				}(),
 			},
