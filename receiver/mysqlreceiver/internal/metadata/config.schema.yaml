@@ -14,6 +14,12 @@ $defs:
   attribute_command:
     description: AttributeCommand specifies the value command attribute.
     type: integer
+  attribute_config:
+    description: AttributeConfig holds configuration information for a particular metric.
+    type: object
+    properties:
+      enabled:
+        type: boolean
   attribute_connection_error:
     description: AttributeConnectionError specifies the value connection_error attribute.
     type: integer
@@ -112,6 +118,12 @@ $defs:
     description: MetricConfig provides common config for a particular metric.
     type: object
     properties:
+      aggregation_strategy:
+        type: string
+      attributes:
+        type: array
+        items:
+          type: string
       enabled:
         type: boolean
   metrics_builder_config:
