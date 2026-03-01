@@ -19,6 +19,7 @@ const (
 	testDataSetDefault testDataSet = iota
 	testDataSetAll
 	testDataSetNone
+	testDataSetReag
 )
 
 func TestMetricsBuilder(t *testing.T) {
@@ -35,6 +36,11 @@ func TestMetricsBuilder(t *testing.T) {
 			name:        "all_set",
 			metricsSet:  testDataSetAll,
 			resAttrsSet: testDataSetAll,
+		},
+		{
+			name:        "reaggregate_set",
+			metricsSet:  testDataSetReag,
+			resAttrsSet: testDataSetReag,
 		},
 		{
 			name:        "none_set",
@@ -60,9 +66,92 @@ func TestMetricsBuilder(t *testing.T) {
 			settings := receivertest.NewNopSettings(receivertest.NopType)
 			settings.Logger = zap.New(observedZapCore)
 			mb := NewMetricsBuilder(loadMetricsBuilderConfig(t, tt.name), settings, WithStartTime(start))
+			aggMap := make(map[string]string) // contains the aggregation strategies for each metric name
+			aggMap["RabbitmqConsumerCount"] = mb.metricRabbitmqConsumerCount.config.AggregationStrategy
+			aggMap["RabbitmqMessageAcknowledged"] = mb.metricRabbitmqMessageAcknowledged.config.AggregationStrategy
+			aggMap["RabbitmqMessageCurrent"] = mb.metricRabbitmqMessageCurrent.config.AggregationStrategy
+			aggMap["RabbitmqMessageDelivered"] = mb.metricRabbitmqMessageDelivered.config.AggregationStrategy
+			aggMap["RabbitmqMessageDropped"] = mb.metricRabbitmqMessageDropped.config.AggregationStrategy
+			aggMap["RabbitmqMessagePublished"] = mb.metricRabbitmqMessagePublished.config.AggregationStrategy
+			aggMap["RabbitmqNodeChannelClosed"] = mb.metricRabbitmqNodeChannelClosed.config.AggregationStrategy
+			aggMap["RabbitmqNodeChannelClosedDetailsRate"] = mb.metricRabbitmqNodeChannelClosedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeChannelCreated"] = mb.metricRabbitmqNodeChannelCreated.config.AggregationStrategy
+			aggMap["RabbitmqNodeChannelCreatedDetailsRate"] = mb.metricRabbitmqNodeChannelCreatedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeConnectionClosed"] = mb.metricRabbitmqNodeConnectionClosed.config.AggregationStrategy
+			aggMap["RabbitmqNodeConnectionClosedDetailsRate"] = mb.metricRabbitmqNodeConnectionClosedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeConnectionCreated"] = mb.metricRabbitmqNodeConnectionCreated.config.AggregationStrategy
+			aggMap["RabbitmqNodeConnectionCreatedDetailsRate"] = mb.metricRabbitmqNodeConnectionCreatedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeContextSwitches"] = mb.metricRabbitmqNodeContextSwitches.config.AggregationStrategy
+			aggMap["RabbitmqNodeContextSwitchesDetailsRate"] = mb.metricRabbitmqNodeContextSwitchesDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeDiskFree"] = mb.metricRabbitmqNodeDiskFree.config.AggregationStrategy
+			aggMap["RabbitmqNodeDiskFreeAlarm"] = mb.metricRabbitmqNodeDiskFreeAlarm.config.AggregationStrategy
+			aggMap["RabbitmqNodeDiskFreeDetailsRate"] = mb.metricRabbitmqNodeDiskFreeDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeDiskFreeLimit"] = mb.metricRabbitmqNodeDiskFreeLimit.config.AggregationStrategy
+			aggMap["RabbitmqNodeFdTotal"] = mb.metricRabbitmqNodeFdTotal.config.AggregationStrategy
+			aggMap["RabbitmqNodeFdUsed"] = mb.metricRabbitmqNodeFdUsed.config.AggregationStrategy
+			aggMap["RabbitmqNodeFdUsedDetailsRate"] = mb.metricRabbitmqNodeFdUsedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeGcBytesReclaimed"] = mb.metricRabbitmqNodeGcBytesReclaimed.config.AggregationStrategy
+			aggMap["RabbitmqNodeGcBytesReclaimedDetailsRate"] = mb.metricRabbitmqNodeGcBytesReclaimedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeGcNum"] = mb.metricRabbitmqNodeGcNum.config.AggregationStrategy
+			aggMap["RabbitmqNodeGcNumDetailsRate"] = mb.metricRabbitmqNodeGcNumDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReadAvgTime"] = mb.metricRabbitmqNodeIoReadAvgTime.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReadAvgTimeDetailsRate"] = mb.metricRabbitmqNodeIoReadAvgTimeDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReadBytes"] = mb.metricRabbitmqNodeIoReadBytes.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReadBytesDetailsRate"] = mb.metricRabbitmqNodeIoReadBytesDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReadCount"] = mb.metricRabbitmqNodeIoReadCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReadCountDetailsRate"] = mb.metricRabbitmqNodeIoReadCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReopenCount"] = mb.metricRabbitmqNodeIoReopenCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoReopenCountDetailsRate"] = mb.metricRabbitmqNodeIoReopenCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSeekAvgTime"] = mb.metricRabbitmqNodeIoSeekAvgTime.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSeekAvgTimeDetailsRate"] = mb.metricRabbitmqNodeIoSeekAvgTimeDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSeekCount"] = mb.metricRabbitmqNodeIoSeekCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSeekCountDetailsRate"] = mb.metricRabbitmqNodeIoSeekCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSyncAvgTime"] = mb.metricRabbitmqNodeIoSyncAvgTime.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSyncAvgTimeDetailsRate"] = mb.metricRabbitmqNodeIoSyncAvgTimeDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSyncCount"] = mb.metricRabbitmqNodeIoSyncCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoSyncCountDetailsRate"] = mb.metricRabbitmqNodeIoSyncCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoWriteAvgTime"] = mb.metricRabbitmqNodeIoWriteAvgTime.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoWriteAvgTimeDetailsRate"] = mb.metricRabbitmqNodeIoWriteAvgTimeDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoWriteBytes"] = mb.metricRabbitmqNodeIoWriteBytes.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoWriteBytesDetailsRate"] = mb.metricRabbitmqNodeIoWriteBytesDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoWriteCount"] = mb.metricRabbitmqNodeIoWriteCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeIoWriteCountDetailsRate"] = mb.metricRabbitmqNodeIoWriteCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeMemAlarm"] = mb.metricRabbitmqNodeMemAlarm.config.AggregationStrategy
+			aggMap["RabbitmqNodeMemLimit"] = mb.metricRabbitmqNodeMemLimit.config.AggregationStrategy
+			aggMap["RabbitmqNodeMemUsed"] = mb.metricRabbitmqNodeMemUsed.config.AggregationStrategy
+			aggMap["RabbitmqNodeMemUsedDetailsRate"] = mb.metricRabbitmqNodeMemUsedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeMnesiaDiskTxCount"] = mb.metricRabbitmqNodeMnesiaDiskTxCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeMnesiaDiskTxCountDetailsRate"] = mb.metricRabbitmqNodeMnesiaDiskTxCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeMnesiaRAMTxCount"] = mb.metricRabbitmqNodeMnesiaRAMTxCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeMnesiaRAMTxCountDetailsRate"] = mb.metricRabbitmqNodeMnesiaRAMTxCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeMsgStoreReadCount"] = mb.metricRabbitmqNodeMsgStoreReadCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeMsgStoreReadCountDetailsRate"] = mb.metricRabbitmqNodeMsgStoreReadCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeMsgStoreWriteCount"] = mb.metricRabbitmqNodeMsgStoreWriteCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeMsgStoreWriteCountDetailsRate"] = mb.metricRabbitmqNodeMsgStoreWriteCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeProcTotal"] = mb.metricRabbitmqNodeProcTotal.config.AggregationStrategy
+			aggMap["RabbitmqNodeProcUsed"] = mb.metricRabbitmqNodeProcUsed.config.AggregationStrategy
+			aggMap["RabbitmqNodeProcUsedDetailsRate"] = mb.metricRabbitmqNodeProcUsedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeProcessors"] = mb.metricRabbitmqNodeProcessors.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueCreated"] = mb.metricRabbitmqNodeQueueCreated.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueCreatedDetailsRate"] = mb.metricRabbitmqNodeQueueCreatedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueDeclared"] = mb.metricRabbitmqNodeQueueDeclared.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueDeclaredDetailsRate"] = mb.metricRabbitmqNodeQueueDeclaredDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueDeleted"] = mb.metricRabbitmqNodeQueueDeleted.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueDeletedDetailsRate"] = mb.metricRabbitmqNodeQueueDeletedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueIndexReadCount"] = mb.metricRabbitmqNodeQueueIndexReadCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueIndexReadCountDetailsRate"] = mb.metricRabbitmqNodeQueueIndexReadCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueIndexWriteCount"] = mb.metricRabbitmqNodeQueueIndexWriteCount.config.AggregationStrategy
+			aggMap["RabbitmqNodeQueueIndexWriteCountDetailsRate"] = mb.metricRabbitmqNodeQueueIndexWriteCountDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeRunQueue"] = mb.metricRabbitmqNodeRunQueue.config.AggregationStrategy
+			aggMap["RabbitmqNodeSocketsTotal"] = mb.metricRabbitmqNodeSocketsTotal.config.AggregationStrategy
+			aggMap["RabbitmqNodeSocketsUsed"] = mb.metricRabbitmqNodeSocketsUsed.config.AggregationStrategy
+			aggMap["RabbitmqNodeSocketsUsedDetailsRate"] = mb.metricRabbitmqNodeSocketsUsedDetailsRate.config.AggregationStrategy
+			aggMap["RabbitmqNodeUptime"] = mb.metricRabbitmqNodeUptime.config.AggregationStrategy
 
 			expectedWarnings := 0
-			assert.Equal(t, expectedWarnings, observedLogs.Len())
+			if tt.metricsSet != testDataSetReag {
+				assert.Equal(t, expectedWarnings, observedLogs.Len())
+			}
 
 			defaultMetricsCount := 0
 			allMetricsCount := 0
@@ -78,6 +167,9 @@ func TestMetricsBuilder(t *testing.T) {
 			defaultMetricsCount++
 			allMetricsCount++
 			mb.RecordRabbitmqMessageCurrentDataPoint(ts, 1, AttributeMessageStateReady)
+			if tt.name == "reaggregate_set" {
+				mb.RecordRabbitmqMessageCurrentDataPoint(ts, 3, AttributeMessageStateUnacknowledged)
+			}
 
 			defaultMetricsCount++
 			allMetricsCount++
@@ -319,6 +411,9 @@ func TestMetricsBuilder(t *testing.T) {
 			rb.SetRabbitmqVhostName("rabbitmq.vhost.name-val")
 			res := rb.Emit()
 			metrics := mb.Emit(WithResource(res))
+			if tt.name == "reaggregate_set" {
+				assert.Empty(t, mb.metricRabbitmqMessageCurrent.aggDataPoints)
+			}
 
 			if tt.expectEmpty {
 				assert.Equal(t, 0, metrics.ResourceMetrics().Len())
@@ -368,22 +463,49 @@ func TestMetricsBuilder(t *testing.T) {
 					assert.Equal(t, pmetric.NumberDataPointValueTypeInt, dp.ValueType())
 					assert.Equal(t, int64(1), dp.IntValue())
 				case "rabbitmq.message.current":
-					assert.False(t, validatedMetrics["rabbitmq.message.current"], "Found a duplicate in the metrics slice: rabbitmq.message.current")
-					validatedMetrics["rabbitmq.message.current"] = true
-					assert.Equal(t, pmetric.MetricTypeSum, ms.At(i).Type())
-					assert.Equal(t, 1, ms.At(i).Sum().DataPoints().Len())
-					assert.Equal(t, "The total number of messages currently in the queue.", ms.At(i).Description())
-					assert.Equal(t, "{messages}", ms.At(i).Unit())
-					assert.False(t, ms.At(i).Sum().IsMonotonic())
-					assert.Equal(t, pmetric.AggregationTemporalityCumulative, ms.At(i).Sum().AggregationTemporality())
-					dp := ms.At(i).Sum().DataPoints().At(0)
-					assert.Equal(t, start, dp.StartTimestamp())
-					assert.Equal(t, ts, dp.Timestamp())
-					assert.Equal(t, pmetric.NumberDataPointValueTypeInt, dp.ValueType())
-					assert.Equal(t, int64(1), dp.IntValue())
-					attrVal, ok := dp.Attributes().Get("state")
-					assert.True(t, ok)
-					assert.Equal(t, "ready", attrVal.Str())
+					if tt.name != "reaggregate_set" {
+						assert.False(t, validatedMetrics["rabbitmq.message.current"], "Found a duplicate in the metrics slice: rabbitmq.message.current")
+						validatedMetrics["rabbitmq.message.current"] = true
+						assert.Equal(t, pmetric.MetricTypeSum, ms.At(i).Type())
+						assert.Equal(t, 1, ms.At(i).Sum().DataPoints().Len())
+						assert.Equal(t, "The total number of messages currently in the queue.", ms.At(i).Description())
+						assert.Equal(t, "{messages}", ms.At(i).Unit())
+						assert.False(t, ms.At(i).Sum().IsMonotonic())
+						assert.Equal(t, pmetric.AggregationTemporalityCumulative, ms.At(i).Sum().AggregationTemporality())
+						dp := ms.At(i).Sum().DataPoints().At(0)
+						assert.Equal(t, start, dp.StartTimestamp())
+						assert.Equal(t, ts, dp.Timestamp())
+						assert.Equal(t, pmetric.NumberDataPointValueTypeInt, dp.ValueType())
+						assert.Equal(t, int64(1), dp.IntValue())
+						attrVal, ok := dp.Attributes().Get("state")
+						assert.True(t, ok)
+						assert.Equal(t, "ready", attrVal.Str())
+					} else {
+						assert.False(t, validatedMetrics["rabbitmq.message.current"], "Found a duplicate in the metrics slice: rabbitmq.message.current")
+						validatedMetrics["rabbitmq.message.current"] = true
+						assert.Equal(t, pmetric.MetricTypeSum, ms.At(i).Type())
+						assert.Equal(t, 1, ms.At(i).Sum().DataPoints().Len())
+						assert.Equal(t, "The total number of messages currently in the queue.", ms.At(i).Description())
+						assert.Equal(t, "{messages}", ms.At(i).Unit())
+						assert.False(t, ms.At(i).Sum().IsMonotonic())
+						assert.Equal(t, pmetric.AggregationTemporalityCumulative, ms.At(i).Sum().AggregationTemporality())
+						dp := ms.At(i).Sum().DataPoints().At(0)
+						assert.Equal(t, start, dp.StartTimestamp())
+						assert.Equal(t, ts, dp.Timestamp())
+						assert.Equal(t, pmetric.NumberDataPointValueTypeInt, dp.ValueType())
+						switch aggMap["rabbitmq.message.current"] {
+						case "sum":
+							assert.Equal(t, int64(4), dp.IntValue())
+						case "avg":
+							assert.Equal(t, int64(2), dp.IntValue())
+						case "min":
+							assert.Equal(t, int64(1), dp.IntValue())
+						case "max":
+							assert.Equal(t, int64(3), dp.IntValue())
+						}
+						_, ok := dp.Attributes().Get("state")
+						assert.False(t, ok)
+					}
 				case "rabbitmq.message.delivered":
 					assert.False(t, validatedMetrics["rabbitmq.message.delivered"], "Found a duplicate in the metrics slice: rabbitmq.message.delivered")
 					validatedMetrics["rabbitmq.message.delivered"] = true

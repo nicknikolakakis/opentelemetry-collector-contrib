@@ -26,9 +26,13 @@ func TestMetricsBuilderConfig(t *testing.T) {
 			name: "all_set",
 			want: MetricsBuilderConfig{
 				Metrics: MetricsConfig{
-					RabbitmqConsumerCount:                       MetricConfig{Enabled: true},
-					RabbitmqMessageAcknowledged:                 MetricConfig{Enabled: true},
-					RabbitmqMessageCurrent:                      MetricConfig{Enabled: true},
+					RabbitmqConsumerCount:       MetricConfig{Enabled: true},
+					RabbitmqMessageAcknowledged: MetricConfig{Enabled: true},
+					RabbitmqMessageCurrent: MetricConfig{
+						Enabled:             true,
+						AggregationStrategy: AggregationStrategySum,
+						EnabledAttributes:   []string{"state"},
+					},
 					RabbitmqMessageDelivered:                    MetricConfig{Enabled: true},
 					RabbitmqMessageDropped:                      MetricConfig{Enabled: true},
 					RabbitmqMessagePublished:                    MetricConfig{Enabled: true},
@@ -118,9 +122,13 @@ func TestMetricsBuilderConfig(t *testing.T) {
 			name: "none_set",
 			want: MetricsBuilderConfig{
 				Metrics: MetricsConfig{
-					RabbitmqConsumerCount:                       MetricConfig{Enabled: false},
-					RabbitmqMessageAcknowledged:                 MetricConfig{Enabled: false},
-					RabbitmqMessageCurrent:                      MetricConfig{Enabled: false},
+					RabbitmqConsumerCount:       MetricConfig{Enabled: false},
+					RabbitmqMessageAcknowledged: MetricConfig{Enabled: false},
+					RabbitmqMessageCurrent: MetricConfig{
+						Enabled:             false,
+						AggregationStrategy: AggregationStrategySum,
+						EnabledAttributes:   []string{"state"},
+					},
 					RabbitmqMessageDelivered:                    MetricConfig{Enabled: false},
 					RabbitmqMessageDropped:                      MetricConfig{Enabled: false},
 					RabbitmqMessagePublished:                    MetricConfig{Enabled: false},
