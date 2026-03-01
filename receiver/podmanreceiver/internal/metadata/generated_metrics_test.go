@@ -19,6 +19,7 @@ const (
 	testDataSetDefault testDataSet = iota
 	testDataSetAll
 	testDataSetNone
+	testDataSetReag
 )
 
 func TestMetricsBuilder(t *testing.T) {
@@ -35,6 +36,11 @@ func TestMetricsBuilder(t *testing.T) {
 			name:        "all_set",
 			metricsSet:  testDataSetAll,
 			resAttrsSet: testDataSetAll,
+		},
+		{
+			name:        "reaggregate_set",
+			metricsSet:  testDataSetReag,
+			resAttrsSet: testDataSetReag,
 		},
 		{
 			name:        "none_set",
@@ -60,9 +66,23 @@ func TestMetricsBuilder(t *testing.T) {
 			settings := receivertest.NewNopSettings(receivertest.NopType)
 			settings.Logger = zap.New(observedZapCore)
 			mb := NewMetricsBuilder(loadMetricsBuilderConfig(t, tt.name), settings, WithStartTime(start))
+			aggMap := make(map[string]string) // contains the aggregation strategies for each metric name
+			aggMap["ContainerBlockioIoServiceBytesRecursiveRead"] = mb.metricContainerBlockioIoServiceBytesRecursiveRead.config.AggregationStrategy
+			aggMap["ContainerBlockioIoServiceBytesRecursiveWrite"] = mb.metricContainerBlockioIoServiceBytesRecursiveWrite.config.AggregationStrategy
+			aggMap["ContainerCPUPercent"] = mb.metricContainerCPUPercent.config.AggregationStrategy
+			aggMap["ContainerCPUUsagePercpu"] = mb.metricContainerCPUUsagePercpu.config.AggregationStrategy
+			aggMap["ContainerCPUUsageSystem"] = mb.metricContainerCPUUsageSystem.config.AggregationStrategy
+			aggMap["ContainerCPUUsageTotal"] = mb.metricContainerCPUUsageTotal.config.AggregationStrategy
+			aggMap["ContainerMemoryPercent"] = mb.metricContainerMemoryPercent.config.AggregationStrategy
+			aggMap["ContainerMemoryUsageLimit"] = mb.metricContainerMemoryUsageLimit.config.AggregationStrategy
+			aggMap["ContainerMemoryUsageTotal"] = mb.metricContainerMemoryUsageTotal.config.AggregationStrategy
+			aggMap["ContainerNetworkIoUsageRxBytes"] = mb.metricContainerNetworkIoUsageRxBytes.config.AggregationStrategy
+			aggMap["ContainerNetworkIoUsageTxBytes"] = mb.metricContainerNetworkIoUsageTxBytes.config.AggregationStrategy
 
 			expectedWarnings := 0
-			assert.Equal(t, expectedWarnings, observedLogs.Len())
+			if tt.metricsSet != testDataSetReag {
+				assert.Equal(t, expectedWarnings, observedLogs.Len())
+			}
 
 			defaultMetricsCount := 0
 			allMetricsCount := 0
@@ -82,6 +102,9 @@ func TestMetricsBuilder(t *testing.T) {
 			defaultMetricsCount++
 			allMetricsCount++
 			mb.RecordContainerCPUUsagePercpuDataPoint(ts, 1, "core-val")
+			if tt.name == "reaggregate_set" {
+				mb.RecordContainerCPUUsagePercpuDataPoint(ts, 3, "core-val-2")
+			}
 
 			defaultMetricsCount++
 			allMetricsCount++
@@ -118,6 +141,9 @@ func TestMetricsBuilder(t *testing.T) {
 			rb.SetContainerRuntime("container.runtime-val")
 			res := rb.Emit()
 			metrics := mb.Emit(WithResource(res))
+			if tt.name == "reaggregate_set" {
+				assert.Empty(t, mb.metricContainerCPUUsagePercpu.aggDataPoints)
+			}
 
 			if tt.expectEmpty {
 				assert.Equal(t, 0, metrics.ResourceMetrics().Len())
@@ -179,22 +205,49 @@ func TestMetricsBuilder(t *testing.T) {
 					assert.Equal(t, pmetric.NumberDataPointValueTypeDouble, dp.ValueType())
 					assert.InDelta(t, float64(1), dp.DoubleValue(), 0.01)
 				case "container.cpu.usage.percpu":
-					assert.False(t, validatedMetrics["container.cpu.usage.percpu"], "Found a duplicate in the metrics slice: container.cpu.usage.percpu")
-					validatedMetrics["container.cpu.usage.percpu"] = true
-					assert.Equal(t, pmetric.MetricTypeSum, ms.At(i).Type())
-					assert.Equal(t, 1, ms.At(i).Sum().DataPoints().Len())
-					assert.Equal(t, "Total CPU time consumed per CPU-core.", ms.At(i).Description())
-					assert.Equal(t, "s", ms.At(i).Unit())
-					assert.True(t, ms.At(i).Sum().IsMonotonic())
-					assert.Equal(t, pmetric.AggregationTemporalityCumulative, ms.At(i).Sum().AggregationTemporality())
-					dp := ms.At(i).Sum().DataPoints().At(0)
-					assert.Equal(t, start, dp.StartTimestamp())
-					assert.Equal(t, ts, dp.Timestamp())
-					assert.Equal(t, pmetric.NumberDataPointValueTypeInt, dp.ValueType())
-					assert.Equal(t, int64(1), dp.IntValue())
-					attrVal, ok := dp.Attributes().Get("core")
-					assert.True(t, ok)
-					assert.Equal(t, "core-val", attrVal.Str())
+					if tt.name != "reaggregate_set" {
+						assert.False(t, validatedMetrics["container.cpu.usage.percpu"], "Found a duplicate in the metrics slice: container.cpu.usage.percpu")
+						validatedMetrics["container.cpu.usage.percpu"] = true
+						assert.Equal(t, pmetric.MetricTypeSum, ms.At(i).Type())
+						assert.Equal(t, 1, ms.At(i).Sum().DataPoints().Len())
+						assert.Equal(t, "Total CPU time consumed per CPU-core.", ms.At(i).Description())
+						assert.Equal(t, "s", ms.At(i).Unit())
+						assert.True(t, ms.At(i).Sum().IsMonotonic())
+						assert.Equal(t, pmetric.AggregationTemporalityCumulative, ms.At(i).Sum().AggregationTemporality())
+						dp := ms.At(i).Sum().DataPoints().At(0)
+						assert.Equal(t, start, dp.StartTimestamp())
+						assert.Equal(t, ts, dp.Timestamp())
+						assert.Equal(t, pmetric.NumberDataPointValueTypeInt, dp.ValueType())
+						assert.Equal(t, int64(1), dp.IntValue())
+						attrVal, ok := dp.Attributes().Get("core")
+						assert.True(t, ok)
+						assert.Equal(t, "core-val", attrVal.Str())
+					} else {
+						assert.False(t, validatedMetrics["container.cpu.usage.percpu"], "Found a duplicate in the metrics slice: container.cpu.usage.percpu")
+						validatedMetrics["container.cpu.usage.percpu"] = true
+						assert.Equal(t, pmetric.MetricTypeSum, ms.At(i).Type())
+						assert.Equal(t, 1, ms.At(i).Sum().DataPoints().Len())
+						assert.Equal(t, "Total CPU time consumed per CPU-core.", ms.At(i).Description())
+						assert.Equal(t, "s", ms.At(i).Unit())
+						assert.True(t, ms.At(i).Sum().IsMonotonic())
+						assert.Equal(t, pmetric.AggregationTemporalityCumulative, ms.At(i).Sum().AggregationTemporality())
+						dp := ms.At(i).Sum().DataPoints().At(0)
+						assert.Equal(t, start, dp.StartTimestamp())
+						assert.Equal(t, ts, dp.Timestamp())
+						assert.Equal(t, pmetric.NumberDataPointValueTypeInt, dp.ValueType())
+						switch aggMap["container.cpu.usage.percpu"] {
+						case "sum":
+							assert.Equal(t, int64(4), dp.IntValue())
+						case "avg":
+							assert.Equal(t, int64(2), dp.IntValue())
+						case "min":
+							assert.Equal(t, int64(1), dp.IntValue())
+						case "max":
+							assert.Equal(t, int64(3), dp.IntValue())
+						}
+						_, ok := dp.Attributes().Get("core")
+						assert.False(t, ok)
+					}
 				case "container.cpu.usage.system":
 					assert.False(t, validatedMetrics["container.cpu.usage.system"], "Found a duplicate in the metrics slice: container.cpu.usage.system")
 					validatedMetrics["container.cpu.usage.system"] = true
