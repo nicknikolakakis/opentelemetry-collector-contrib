@@ -6,13 +6,11 @@ all_set:
       attributes: ["status"]
     mysql.buffer_pool.limit:
       enabled: true
-      attributes: []
     mysql.buffer_pool.operations:
       enabled: true
       attributes: ["operation"]
     mysql.buffer_pool.page_flushes:
       enabled: true
-      attributes: []
     mysql.buffer_pool.pages:
       enabled: true
       attributes: ["kind"]
@@ -27,7 +25,6 @@ all_set:
       attributes: ["command"]
     mysql.connection.count:
       enabled: true
-      attributes: []
     mysql.connection.errors:
       enabled: true
       attributes: ["error"]
@@ -54,7 +51,6 @@ all_set:
       attributes: ["operation"]
     mysql.max_used_connections:
       enabled: true
-      attributes: []
     mysql.mysqlx_connections:
       enabled: true
       attributes: ["status"]
@@ -72,25 +68,19 @@ all_set:
       attributes: ["operation"]
     mysql.page_size:
       enabled: true
-      attributes: []
     mysql.prepared_statements:
       enabled: true
       attributes: ["command"]
     mysql.query.client.count:
       enabled: true
-      attributes: []
     mysql.query.count:
       enabled: true
-      attributes: []
     mysql.query.slow.count:
       enabled: true
-      attributes: []
     mysql.replica.sql_delay:
       enabled: true
-      attributes: []
     mysql.replica.time_behind_source:
       enabled: true
-      attributes: []
     mysql.row_locks:
       enabled: true
       attributes: ["kind"]
@@ -144,7 +134,6 @@ all_set:
       attributes: ["resource"]
     mysql.uptime:
       enabled: true
-      attributes: []
   events:
     db.server.query_sample:
       enabled: true
@@ -160,13 +149,11 @@ reaggregate_set:
       attributes: []
     mysql.buffer_pool.limit:
       enabled: true
-      attributes: []
     mysql.buffer_pool.operations:
       enabled: true
       attributes: []
     mysql.buffer_pool.page_flushes:
       enabled: true
-      attributes: []
     mysql.buffer_pool.pages:
       enabled: true
       attributes: []
@@ -181,7 +168,6 @@ reaggregate_set:
       attributes: []
     mysql.connection.count:
       enabled: true
-      attributes: []
     mysql.connection.errors:
       enabled: true
       attributes: []
@@ -208,7 +194,6 @@ reaggregate_set:
       attributes: []
     mysql.max_used_connections:
       enabled: true
-      attributes: []
     mysql.mysqlx_connections:
       enabled: true
       attributes: []
@@ -226,25 +211,19 @@ reaggregate_set:
       attributes: []
     mysql.page_size:
       enabled: true
-      attributes: []
     mysql.prepared_statements:
       enabled: true
       attributes: []
     mysql.query.client.count:
       enabled: true
-      attributes: []
     mysql.query.count:
       enabled: true
-      attributes: []
     mysql.query.slow.count:
       enabled: true
-      attributes: []
     mysql.replica.sql_delay:
       enabled: true
-      attributes: []
     mysql.replica.time_behind_source:
       enabled: true
-      attributes: []
     mysql.row_locks:
       enabled: true
       attributes: []
@@ -298,7 +277,6 @@ reaggregate_set:
       attributes: []
     mysql.uptime:
       enabled: true
-      attributes: []
   events:
     db.server.query_sample:
       enabled: true
@@ -314,13 +292,11 @@ none_set:
       attributes: ["status"]
     mysql.buffer_pool.limit:
       enabled: false
-      attributes: []
     mysql.buffer_pool.operations:
       enabled: false
       attributes: ["operation"]
     mysql.buffer_pool.page_flushes:
       enabled: false
-      attributes: []
     mysql.buffer_pool.pages:
       enabled: false
       attributes: ["kind"]
@@ -335,7 +311,6 @@ none_set:
       attributes: ["command"]
     mysql.connection.count:
       enabled: false
-      attributes: []
     mysql.connection.errors:
       enabled: false
       attributes: ["error"]
@@ -362,7 +337,6 @@ none_set:
       attributes: ["operation"]
     mysql.max_used_connections:
       enabled: false
-      attributes: []
     mysql.mysqlx_connections:
       enabled: false
       attributes: ["status"]
@@ -380,25 +354,19 @@ none_set:
       attributes: ["operation"]
     mysql.page_size:
       enabled: false
-      attributes: []
     mysql.prepared_statements:
       enabled: false
       attributes: ["command"]
     mysql.query.client.count:
       enabled: false
-      attributes: []
     mysql.query.count:
       enabled: false
-      attributes: []
     mysql.query.slow.count:
       enabled: false
-      attributes: []
     mysql.replica.sql_delay:
       enabled: false
-      attributes: []
     mysql.replica.time_behind_source:
       enabled: false
-      attributes: []
     mysql.row_locks:
       enabled: false
       attributes: ["kind"]
@@ -452,7 +420,6 @@ none_set:
       attributes: ["resource"]
     mysql.uptime:
       enabled: false
-      attributes: []
   events:
     db.server.query_sample:
       enabled: false
