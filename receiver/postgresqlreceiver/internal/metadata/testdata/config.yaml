@@ -3,10 +3,8 @@ all_set:
   metrics:
     postgresql.backends:
       enabled: true
-      attributes: []
     postgresql.bgwriter.buffers.allocated:
       enabled: true
-      attributes: []
     postgresql.bgwriter.buffers.writes:
       enabled: true
       attributes: ["source"]
@@ -18,43 +16,33 @@ all_set:
       attributes: ["type"]
     postgresql.bgwriter.maxwritten:
       enabled: true
-      attributes: []
     postgresql.blks_hit:
       enabled: true
-      attributes: []
     postgresql.blks_read:
       enabled: true
-      attributes: []
     postgresql.blocks_read:
       enabled: true
       attributes: ["source"]
     postgresql.commits:
       enabled: true
-      attributes: []
     postgresql.connection.max:
       enabled: true
-      attributes: []
     postgresql.database.count:
       enabled: true
-      attributes: []
     postgresql.database.locks:
       enabled: true
       attributes: ["relation","mode","lock_type"]
     postgresql.db_size:
       enabled: true
-      attributes: []
     postgresql.deadlocks:
       enabled: true
-      attributes: []
     postgresql.function.calls:
       enabled: true
       attributes: ["function"]
     postgresql.index.scans:
       enabled: true
-      attributes: []
     postgresql.index.size:
       enabled: true
-      attributes: []
     postgresql.operations:
       enabled: true
       attributes: ["operation"]
@@ -63,46 +51,33 @@ all_set:
       attributes: ["replication_client"]
     postgresql.rollbacks:
       enabled: true
-      attributes: []
     postgresql.rows:
       enabled: true
       attributes: ["state"]
     postgresql.sequential_scans:
       enabled: true
-      attributes: []
     postgresql.table.count:
       enabled: true
-      attributes: []
     postgresql.table.size:
       enabled: true
-      attributes: []
     postgresql.table.vacuum.count:
       enabled: true
-      attributes: []
     postgresql.temp.io:
       enabled: true
-      attributes: []
     postgresql.temp_files:
       enabled: true
-      attributes: []
     postgresql.tup_deleted:
       enabled: true
-      attributes: []
     postgresql.tup_fetched:
       enabled: true
-      attributes: []
     postgresql.tup_inserted:
       enabled: true
-      attributes: []
     postgresql.tup_returned:
       enabled: true
-      attributes: []
     postgresql.tup_updated:
       enabled: true
-      attributes: []
     postgresql.wal.age:
       enabled: true
-      attributes: []
     postgresql.wal.delay:
       enabled: true
       attributes: ["operation","replication_client"]
@@ -129,10 +104,8 @@ reaggregate_set:
   metrics:
     postgresql.backends:
       enabled: true
-      attributes: []
     postgresql.bgwriter.buffers.allocated:
       enabled: true
-      attributes: []
     postgresql.bgwriter.buffers.writes:
       enabled: true
       attributes: []
@@ -144,43 +117,33 @@ reaggregate_set:
       attributes: []
     postgresql.bgwriter.maxwritten:
       enabled: true
-      attributes: []
     postgresql.blks_hit:
       enabled: true
-      attributes: []
     postgresql.blks_read:
       enabled: true
-      attributes: []
     postgresql.blocks_read:
       enabled: true
       attributes: []
     postgresql.commits:
       enabled: true
-      attributes: []
     postgresql.connection.max:
       enabled: true
-      attributes: []
     postgresql.database.count:
       enabled: true
-      attributes: []
     postgresql.database.locks:
       enabled: true
       attributes: []
     postgresql.db_size:
       enabled: true
-      attributes: []
     postgresql.deadlocks:
       enabled: true
-      attributes: []
     postgresql.function.calls:
       enabled: true
       attributes: []
     postgresql.index.scans:
       enabled: true
-      attributes: []
     postgresql.index.size:
       enabled: true
-      attributes: []
     postgresql.operations:
       enabled: true
       attributes: []
@@ -189,46 +152,33 @@ reaggregate_set:
       attributes: []
     postgresql.rollbacks:
       enabled: true
-      attributes: []
     postgresql.rows:
       enabled: true
       attributes: []
     postgresql.sequential_scans:
       enabled: true
-      attributes: []
     postgresql.table.count:
       enabled: true
-      attributes: []
     postgresql.table.size:
       enabled: true
-      attributes: []
     postgresql.table.vacuum.count:
       enabled: true
-      attributes: []
     postgresql.temp.io:
       enabled: true
-      attributes: []
     postgresql.temp_files:
       enabled: true
-      attributes: []
     postgresql.tup_deleted:
       enabled: true
-      attributes: []
     postgresql.tup_fetched:
       enabled: true
-      attributes: []
     postgresql.tup_inserted:
       enabled: true
-      attributes: []
     postgresql.tup_returned:
       enabled: true
-      attributes: []
     postgresql.tup_updated:
       enabled: true
-      attributes: []
     postgresql.wal.age:
       enabled: true
-      attributes: []
     postgresql.wal.delay:
       enabled: true
       attributes: []
@@ -255,10 +205,8 @@ none_set:
   metrics:
     postgresql.backends:
       enabled: false
-      attributes: []
     postgresql.bgwriter.buffers.allocated:
       enabled: false
-      attributes: []
     postgresql.bgwriter.buffers.writes:
       enabled: false
       attributes: ["source"]
@@ -270,43 +218,33 @@ none_set:
       attributes: ["type"]
     postgresql.bgwriter.maxwritten:
       enabled: false
-      attributes: []
     postgresql.blks_hit:
       enabled: false
-      attributes: []
     postgresql.blks_read:
       enabled: false
-      attributes: []
     postgresql.blocks_read:
       enabled: false
       attributes: ["source"]
     postgresql.commits:
       enabled: false
-      attributes: []
     postgresql.connection.max:
       enabled: false
-      attributes: []
     postgresql.database.count:
       enabled: false
-      attributes: []
     postgresql.database.locks:
       enabled: false
       attributes: ["relation","mode","lock_type"]
     postgresql.db_size:
       enabled: false
-      attributes: []
     postgresql.deadlocks:
       enabled: false
-      attributes: []
     postgresql.function.calls:
       enabled: false
       attributes: ["function"]
     postgresql.index.scans:
       enabled: false
-      attributes: []
     postgresql.index.size:
       enabled: false
-      attributes: []
     postgresql.operations:
       enabled: false
       attributes: ["operation"]
@@ -315,46 +253,33 @@ none_set:
       attributes: ["replication_client"]
     postgresql.rollbacks:
       enabled: false
-      attributes: []
     postgresql.rows:
       enabled: false
       attributes: ["state"]
     postgresql.sequential_scans:
       enabled: false
-      attributes: []
     postgresql.table.count:
       enabled: false
-      attributes: []
     postgresql.table.size:
       enabled: false
-      attributes: []
     postgresql.table.vacuum.count:
       enabled: false
-      attributes: []
     postgresql.temp.io:
       enabled: false
-      attributes: []
     postgresql.temp_files:
       enabled: false
-      attributes: []
     postgresql.tup_deleted:
       enabled: false
-      attributes: []
     postgresql.tup_fetched:
       enabled: false
-      attributes: []
     postgresql.tup_inserted:
       enabled: false
-      attributes: []
     postgresql.tup_returned:
       enabled: false
-      attributes: []
     postgresql.tup_updated:
       enabled: false
-      attributes: []
     postgresql.wal.age:
       enabled: false
-      attributes: []
     postgresql.wal.delay:
       enabled: false
       attributes: ["operation","replication_client"]
