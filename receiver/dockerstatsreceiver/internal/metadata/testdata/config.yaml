@@ -27,157 +27,107 @@ all_set:
       attributes: ["device_major","device_minor","operation"]
     container.cpu.limit:
       enabled: true
-      attributes: []
     container.cpu.logical.count:
       enabled: true
-      attributes: []
     container.cpu.shares:
       enabled: true
-      attributes: []
     container.cpu.throttling_data.periods:
       enabled: true
-      attributes: []
     container.cpu.throttling_data.throttled_periods:
       enabled: true
-      attributes: []
     container.cpu.throttling_data.throttled_time:
       enabled: true
-      attributes: []
     container.cpu.usage.kernelmode:
       enabled: true
-      attributes: []
     container.cpu.usage.percpu:
       enabled: true
       attributes: ["core"]
     container.cpu.usage.system:
       enabled: true
-      attributes: []
     container.cpu.usage.total:
       enabled: true
-      attributes: []
     container.cpu.usage.usermode:
       enabled: true
-      attributes: []
     container.cpu.utilization:
       enabled: true
-      attributes: []
     container.memory.active_anon:
       enabled: true
-      attributes: []
     container.memory.active_file:
       enabled: true
-      attributes: []
     container.memory.anon:
       enabled: true
-      attributes: []
     container.memory.cache:
       enabled: true
-      attributes: []
     container.memory.dirty:
       enabled: true
-      attributes: []
     container.memory.fails:
       enabled: true
-      attributes: []
     container.memory.file:
       enabled: true
-      attributes: []
     container.memory.hierarchical_memory_limit:
       enabled: true
-      attributes: []
     container.memory.hierarchical_memsw_limit:
       enabled: true
-      attributes: []
     container.memory.inactive_anon:
       enabled: true
-      attributes: []
     container.memory.inactive_file:
       enabled: true
-      attributes: []
     container.memory.mapped_file:
       enabled: true
-      attributes: []
     container.memory.percent:
       enabled: true
-      attributes: []
     container.memory.pgfault:
       enabled: true
-      attributes: []
     container.memory.pgmajfault:
       enabled: true
-      attributes: []
     container.memory.pgpgin:
       enabled: true
-      attributes: []
     container.memory.pgpgout:
       enabled: true
-      attributes: []
     container.memory.rss:
       enabled: true
-      attributes: []
     container.memory.rss_huge:
       enabled: true
-      attributes: []
     container.memory.total_active_anon:
       enabled: true
-      attributes: []
     container.memory.total_active_file:
       enabled: true
-      attributes: []
     container.memory.total_cache:
       enabled: true
-      attributes: []
     container.memory.total_dirty:
       enabled: true
-      attributes: []
     container.memory.total_inactive_anon:
       enabled: true
-      attributes: []
     container.memory.total_inactive_file:
       enabled: true
-      attributes: []
     container.memory.total_mapped_file:
       enabled: true
-      attributes: []
     container.memory.total_pgfault:
       enabled: true
-      attributes: []
     container.memory.total_pgmajfault:
       enabled: true
-      attributes: []
     container.memory.total_pgpgin:
       enabled: true
-      attributes: []
     container.memory.total_pgpgout:
       enabled: true
-      attributes: []
     container.memory.total_rss:
       enabled: true
-      attributes: []
     container.memory.total_rss_huge:
       enabled: true
-      attributes: []
     container.memory.total_unevictable:
       enabled: true
-      attributes: []
     container.memory.total_writeback:
       enabled: true
-      attributes: []
     container.memory.unevictable:
       enabled: true
-      attributes: []
     container.memory.usage.limit:
       enabled: true
-      attributes: []
     container.memory.usage.max:
       enabled: true
-      attributes: []
     container.memory.usage.total:
       enabled: true
-      attributes: []
     container.memory.writeback:
       enabled: true
-      attributes: []
     container.network.io.usage.rx_bytes:
       enabled: true
       attributes: ["interface"]
@@ -204,16 +154,12 @@ all_set:
       attributes: ["interface"]
     container.pids.count:
       enabled: true
-      attributes: []
     container.pids.limit:
       enabled: true
-      attributes: []
     container.restarts:
       enabled: true
-      attributes: []
     container.uptime:
       enabled: true
-      attributes: []
   resource_attributes:
     container.command_line:
       enabled: true
@@ -257,157 +203,107 @@ reaggregate_set:
       attributes: []
     container.cpu.limit:
       enabled: true
-      attributes: []
     container.cpu.logical.count:
       enabled: true
-      attributes: []
     container.cpu.shares:
       enabled: true
-      attributes: []
     container.cpu.throttling_data.periods:
       enabled: true
-      attributes: []
     container.cpu.throttling_data.throttled_periods:
       enabled: true
-      attributes: []
     container.cpu.throttling_data.throttled_time:
       enabled: true
-      attributes: []
     container.cpu.usage.kernelmode:
       enabled: true
-      attributes: []
     container.cpu.usage.percpu:
       enabled: true
       attributes: []
     container.cpu.usage.system:
       enabled: true
-      attributes: []
     container.cpu.usage.total:
       enabled: true
-      attributes: []
     container.cpu.usage.usermode:
       enabled: true
-      attributes: []
     container.cpu.utilization:
       enabled: true
-      attributes: []
     container.memory.active_anon:
       enabled: true
-      attributes: []
     container.memory.active_file:
       enabled: true
-      attributes: []
     container.memory.anon:
       enabled: true
-      attributes: []
     container.memory.cache:
       enabled: true
-      attributes: []
     container.memory.dirty:
       enabled: true
-      attributes: []
     container.memory.fails:
       enabled: true
-      attributes: []
     container.memory.file:
       enabled: true
-      attributes: []
     container.memory.hierarchical_memory_limit:
       enabled: true
-      attributes: []
     container.memory.hierarchical_memsw_limit:
       enabled: true
-      attributes: []
     container.memory.inactive_anon:
       enabled: true
-      attributes: []
     container.memory.inactive_file:
       enabled: true
-      attributes: []
     container.memory.mapped_file:
       enabled: true
-      attributes: []
     container.memory.percent:
       enabled: true
-      attributes: []
     container.memory.pgfault:
       enabled: true
-      attributes: []
     container.memory.pgmajfault:
       enabled: true
-      attributes: []
     container.memory.pgpgin:
       enabled: true
-      attributes: []
     container.memory.pgpgout:
       enabled: true
-      attributes: []
     container.memory.rss:
       enabled: true
-      attributes: []
     container.memory.rss_huge:
       enabled: true
-      attributes: []
     container.memory.total_active_anon:
       enabled: true
-      attributes: []
     container.memory.total_active_file:
       enabled: true
-      attributes: []
     container.memory.total_cache:
       enabled: true
-      attributes: []
     container.memory.total_dirty:
       enabled: true
-      attributes: []
     container.memory.total_inactive_anon:
       enabled: true
-      attributes: []
     container.memory.total_inactive_file:
       enabled: true
-      attributes: []
     container.memory.total_mapped_file:
       enabled: true
-      attributes: []
     container.memory.total_pgfault:
       enabled: true
-      attributes: []
     container.memory.total_pgmajfault:
       enabled: true
-      attributes: []
     container.memory.total_pgpgin:
       enabled: true
-      attributes: []
     container.memory.total_pgpgout:
       enabled: true
-      attributes: []
     container.memory.total_rss:
       enabled: true
-      attributes: []
     container.memory.total_rss_huge:
       enabled: true
-      attributes: []
     container.memory.total_unevictable:
       enabled: true
-      attributes: []
     container.memory.total_writeback:
       enabled: true
-      attributes: []
     container.memory.unevictable:
       enabled: true
-      attributes: []
     container.memory.usage.limit:
       enabled: true
-      attributes: []
     container.memory.usage.max:
       enabled: true
-      attributes: []
     container.memory.usage.total:
       enabled: true
-      attributes: []
     container.memory.writeback:
       enabled: true
-      attributes: []
     container.network.io.usage.rx_bytes:
       enabled: true
       attributes: []
@@ -434,16 +330,12 @@ reaggregate_set:
       attributes: []
     container.pids.count:
       enabled: true
-      attributes: []
     container.pids.limit:
       enabled: true
-      attributes: []
     container.restarts:
       enabled: true
-      attributes: []
     container.uptime:
       enabled: true
-      attributes: []
   resource_attributes:
     container.command_line:
       enabled: true
@@ -487,157 +379,107 @@ none_set:
       attributes: ["device_major","device_minor","operation"]
     container.cpu.limit:
       enabled: false
-      attributes: []
     container.cpu.logical.count:
       enabled: false
-      attributes: []
     container.cpu.shares:
       enabled: false
-      attributes: []
     container.cpu.throttling_data.periods:
       enabled: false
-      attributes: []
     container.cpu.throttling_data.throttled_periods:
       enabled: false
-      attributes: []
     container.cpu.throttling_data.throttled_time:
       enabled: false
-      attributes: []
     container.cpu.usage.kernelmode:
       enabled: false
-      attributes: []
     container.cpu.usage.percpu:
       enabled: false
       attributes: ["core"]
     container.cpu.usage.system:
       enabled: false
-      attributes: []
     container.cpu.usage.total:
       enabled: false
-      attributes: []
     container.cpu.usage.usermode:
       enabled: false
-      attributes: []
     container.cpu.utilization:
       enabled: false
-      attributes: []
     container.memory.active_anon:
       enabled: false
-      attributes: []
     container.memory.active_file:
       enabled: false
-      attributes: []
     container.memory.anon:
       enabled: false
-      attributes: []
     container.memory.cache:
       enabled: false
-      attributes: []
     container.memory.dirty:
       enabled: false
-      attributes: []
     container.memory.fails:
       enabled: false
-      attributes: []
     container.memory.file:
       enabled: false
-      attributes: []
     container.memory.hierarchical_memory_limit:
       enabled: false
-      attributes: []
     container.memory.hierarchical_memsw_limit:
       enabled: false
-      attributes: []
     container.memory.inactive_anon:
       enabled: false
-      attributes: []
     container.memory.inactive_file:
       enabled: false
-      attributes: []
     container.memory.mapped_file:
       enabled: false
-      attributes: []
     container.memory.percent:
       enabled: false
-      attributes: []
     container.memory.pgfault:
       enabled: false
-      attributes: []
     container.memory.pgmajfault:
       enabled: false
-      attributes: []
     container.memory.pgpgin:
       enabled: false
-      attributes: []
     container.memory.pgpgout:
       enabled: false
-      attributes: []
     container.memory.rss:
       enabled: false
-      attributes: []
     container.memory.rss_huge:
       enabled: false
-      attributes: []
     container.memory.total_active_anon:
       enabled: false
-      attributes: []
     container.memory.total_active_file:
       enabled: false
-      attributes: []
     container.memory.total_cache:
       enabled: false
-      attributes: []
     container.memory.total_dirty:
       enabled: false
-      attributes: []
     container.memory.total_inactive_anon:
       enabled: false
-      attributes: []
     container.memory.total_inactive_file:
       enabled: false
-      attributes: []
     container.memory.total_mapped_file:
       enabled: false
-      attributes: []
     container.memory.total_pgfault:
       enabled: false
-      attributes: []
     container.memory.total_pgmajfault:
       enabled: false
-      attributes: []
     container.memory.total_pgpgin:
       enabled: false
-      attributes: []
     container.memory.total_pgpgout:
       enabled: false
-      attributes: []
     container.memory.total_rss:
       enabled: false
-      attributes: []
     container.memory.total_rss_huge:
       enabled: false
-      attributes: []
     container.memory.total_unevictable:
       enabled: false
-      attributes: []
     container.memory.total_writeback:
       enabled: false
-      attributes: []
     container.memory.unevictable:
       enabled: false
-      attributes: []
     container.memory.usage.limit:
       enabled: false
-      attributes: []
     container.memory.usage.max:
       enabled: false
-      attributes: []
     container.memory.usage.total:
       enabled: false
-      attributes: []
     container.memory.writeback:
       enabled: false
-      attributes: []
     container.network.io.usage.rx_bytes:
       enabled: false
       attributes: ["interface"]
@@ -664,16 +506,12 @@ none_set:
       attributes: ["interface"]
     container.pids.count:
       enabled: false
-      attributes: []
     container.pids.limit:
       enabled: false
-      attributes: []
     container.restarts:
       enabled: false
-      attributes: []
     container.uptime:
       enabled: false
-      attributes: []
   resource_attributes:
     container.command_line:
       enabled: false

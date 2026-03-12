@@ -26,360 +26,252 @@ func TestMetricsBuilderConfig(t *testing.T) {
 			name: "all_set",
 			want: MetricsBuilderConfig{
 				Metrics: MetricsConfig{
-					ContainerBlockioIoMergedRecursive: MetricConfig{
+					ContainerBlockioIoMergedRecursive: ContainerBlockioIoMergedRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoMergedRecursiveAttributeKey{ContainerBlockioIoMergedRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoMergedRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoMergedRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoQueuedRecursive: MetricConfig{
+					ContainerBlockioIoQueuedRecursive: ContainerBlockioIoQueuedRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoQueuedRecursiveAttributeKey{ContainerBlockioIoQueuedRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoQueuedRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoQueuedRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoServiceBytesRecursive: MetricConfig{
+					ContainerBlockioIoServiceBytesRecursive: ContainerBlockioIoServiceBytesRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoServiceBytesRecursiveAttributeKey{ContainerBlockioIoServiceBytesRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoServiceBytesRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoServiceBytesRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoServiceTimeRecursive: MetricConfig{
+					ContainerBlockioIoServiceTimeRecursive: ContainerBlockioIoServiceTimeRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoServiceTimeRecursiveAttributeKey{ContainerBlockioIoServiceTimeRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoServiceTimeRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoServiceTimeRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoServicedRecursive: MetricConfig{
+					ContainerBlockioIoServicedRecursive: ContainerBlockioIoServicedRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoServicedRecursiveAttributeKey{ContainerBlockioIoServicedRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoServicedRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoServicedRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoTimeRecursive: MetricConfig{
+					ContainerBlockioIoTimeRecursive: ContainerBlockioIoTimeRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoTimeRecursiveAttributeKey{ContainerBlockioIoTimeRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoTimeRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoTimeRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoWaitTimeRecursive: MetricConfig{
+					ContainerBlockioIoWaitTimeRecursive: ContainerBlockioIoWaitTimeRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoWaitTimeRecursiveAttributeKey{ContainerBlockioIoWaitTimeRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoWaitTimeRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoWaitTimeRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioSectorsRecursive: MetricConfig{
+					ContainerBlockioSectorsRecursive: ContainerBlockioSectorsRecursiveConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioSectorsRecursiveAttributeKey{ContainerBlockioSectorsRecursiveAttributeKeyDeviceMajor, ContainerBlockioSectorsRecursiveAttributeKeyDeviceMinor, ContainerBlockioSectorsRecursiveAttributeKeyOperation},
 					},
-					ContainerCPULimit: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPULimit: ContainerCPULimitConfig{
+						Enabled: true,
 					},
-					ContainerCPULogicalCount: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPULogicalCount: ContainerCPULogicalCountConfig{
+						Enabled: true,
 					},
-					ContainerCPUShares: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPUShares: ContainerCPUSharesConfig{
+						Enabled: true,
 					},
-					ContainerCPUThrottlingDataPeriods: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUThrottlingDataPeriods: ContainerCPUThrottlingDataPeriodsConfig{
+						Enabled: true,
 					},
-					ContainerCPUThrottlingDataThrottledPeriods: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUThrottlingDataThrottledPeriods: ContainerCPUThrottlingDataThrottledPeriodsConfig{
+						Enabled: true,
 					},
-					ContainerCPUThrottlingDataThrottledTime: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUThrottlingDataThrottledTime: ContainerCPUThrottlingDataThrottledTimeConfig{
+						Enabled: true,
 					},
-					ContainerCPUUsageKernelmode: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageKernelmode: ContainerCPUUsageKernelmodeConfig{
+						Enabled: true,
 					},
-					ContainerCPUUsagePercpu: MetricConfig{
+					ContainerCPUUsagePercpu: ContainerCPUUsagePercpuConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"core"},
+						EnabledAttributes:   []ContainerCPUUsagePercpuAttributeKey{ContainerCPUUsagePercpuAttributeKeyCore},
 					},
-					ContainerCPUUsageSystem: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageSystem: ContainerCPUUsageSystemConfig{
+						Enabled: true,
 					},
-					ContainerCPUUsageTotal: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageTotal: ContainerCPUUsageTotalConfig{
+						Enabled: true,
 					},
-					ContainerCPUUsageUsermode: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageUsermode: ContainerCPUUsageUsermodeConfig{
+						Enabled: true,
 					},
-					ContainerCPUUtilization: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPUUtilization: ContainerCPUUtilizationConfig{
+						Enabled: true,
 					},
-					ContainerMemoryActiveAnon: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryActiveAnon: ContainerMemoryActiveAnonConfig{
+						Enabled: true,
 					},
-					ContainerMemoryActiveFile: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryActiveFile: ContainerMemoryActiveFileConfig{
+						Enabled: true,
 					},
-					ContainerMemoryAnon: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryAnon: ContainerMemoryAnonConfig{
+						Enabled: true,
 					},
-					ContainerMemoryCache: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryCache: ContainerMemoryCacheConfig{
+						Enabled: true,
 					},
-					ContainerMemoryDirty: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryDirty: ContainerMemoryDirtyConfig{
+						Enabled: true,
 					},
-					ContainerMemoryFails: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryFails: ContainerMemoryFailsConfig{
+						Enabled: true,
 					},
-					ContainerMemoryFile: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryFile: ContainerMemoryFileConfig{
+						Enabled: true,
 					},
-					ContainerMemoryHierarchicalMemoryLimit: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryHierarchicalMemoryLimit: ContainerMemoryHierarchicalMemoryLimitConfig{
+						Enabled: true,
 					},
-					ContainerMemoryHierarchicalMemswLimit: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryHierarchicalMemswLimit: ContainerMemoryHierarchicalMemswLimitConfig{
+						Enabled: true,
 					},
-					ContainerMemoryInactiveAnon: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryInactiveAnon: ContainerMemoryInactiveAnonConfig{
+						Enabled: true,
 					},
-					ContainerMemoryInactiveFile: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryInactiveFile: ContainerMemoryInactiveFileConfig{
+						Enabled: true,
 					},
-					ContainerMemoryMappedFile: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryMappedFile: ContainerMemoryMappedFileConfig{
+						Enabled: true,
 					},
-					ContainerMemoryPercent: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPercent: ContainerMemoryPercentConfig{
+						Enabled: true,
 					},
-					ContainerMemoryPgfault: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgfault: ContainerMemoryPgfaultConfig{
+						Enabled: true,
 					},
-					ContainerMemoryPgmajfault: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgmajfault: ContainerMemoryPgmajfaultConfig{
+						Enabled: true,
 					},
-					ContainerMemoryPgpgin: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgpgin: ContainerMemoryPgpginConfig{
+						Enabled: true,
 					},
-					ContainerMemoryPgpgout: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgpgout: ContainerMemoryPgpgoutConfig{
+						Enabled: true,
 					},
-					ContainerMemoryRss: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryRss: ContainerMemoryRssConfig{
+						Enabled: true,
 					},
-					ContainerMemoryRssHuge: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryRssHuge: ContainerMemoryRssHugeConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalActiveAnon: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalActiveAnon: ContainerMemoryTotalActiveAnonConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalActiveFile: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalActiveFile: ContainerMemoryTotalActiveFileConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalCache: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalCache: ContainerMemoryTotalCacheConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalDirty: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalDirty: ContainerMemoryTotalDirtyConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalInactiveAnon: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalInactiveAnon: ContainerMemoryTotalInactiveAnonConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalInactiveFile: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalInactiveFile: ContainerMemoryTotalInactiveFileConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalMappedFile: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalMappedFile: ContainerMemoryTotalMappedFileConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalPgfault: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgfault: ContainerMemoryTotalPgfaultConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalPgmajfault: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgmajfault: ContainerMemoryTotalPgmajfaultConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalPgpgin: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgpgin: ContainerMemoryTotalPgpginConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalPgpgout: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgpgout: ContainerMemoryTotalPgpgoutConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalRss: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalRss: ContainerMemoryTotalRssConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalRssHuge: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalRssHuge: ContainerMemoryTotalRssHugeConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalUnevictable: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalUnevictable: ContainerMemoryTotalUnevictableConfig{
+						Enabled: true,
 					},
-					ContainerMemoryTotalWriteback: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalWriteback: ContainerMemoryTotalWritebackConfig{
+						Enabled: true,
 					},
-					ContainerMemoryUnevictable: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUnevictable: ContainerMemoryUnevictableConfig{
+						Enabled: true,
 					},
-					ContainerMemoryUsageLimit: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUsageLimit: ContainerMemoryUsageLimitConfig{
+						Enabled: true,
 					},
-					ContainerMemoryUsageMax: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUsageMax: ContainerMemoryUsageMaxConfig{
+						Enabled: true,
 					},
-					ContainerMemoryUsageTotal: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUsageTotal: ContainerMemoryUsageTotalConfig{
+						Enabled: true,
 					},
-					ContainerMemoryWriteback: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryWriteback: ContainerMemoryWritebackConfig{
+						Enabled: true,
 					},
-					ContainerNetworkIoUsageRxBytes: MetricConfig{
+					ContainerNetworkIoUsageRxBytes: ContainerNetworkIoUsageRxBytesConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxBytesAttributeKey{ContainerNetworkIoUsageRxBytesAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageRxDropped: MetricConfig{
+					ContainerNetworkIoUsageRxDropped: ContainerNetworkIoUsageRxDroppedConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxDroppedAttributeKey{ContainerNetworkIoUsageRxDroppedAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageRxErrors: MetricConfig{
+					ContainerNetworkIoUsageRxErrors: ContainerNetworkIoUsageRxErrorsConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxErrorsAttributeKey{ContainerNetworkIoUsageRxErrorsAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageRxPackets: MetricConfig{
+					ContainerNetworkIoUsageRxPackets: ContainerNetworkIoUsageRxPacketsConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxPacketsAttributeKey{ContainerNetworkIoUsageRxPacketsAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxBytes: MetricConfig{
+					ContainerNetworkIoUsageTxBytes: ContainerNetworkIoUsageTxBytesConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxBytesAttributeKey{ContainerNetworkIoUsageTxBytesAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxDropped: MetricConfig{
+					ContainerNetworkIoUsageTxDropped: ContainerNetworkIoUsageTxDroppedConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxDroppedAttributeKey{ContainerNetworkIoUsageTxDroppedAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxErrors: MetricConfig{
+					ContainerNetworkIoUsageTxErrors: ContainerNetworkIoUsageTxErrorsConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxErrorsAttributeKey{ContainerNetworkIoUsageTxErrorsAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxPackets: MetricConfig{
+					ContainerNetworkIoUsageTxPackets: ContainerNetworkIoUsageTxPacketsConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxPacketsAttributeKey{ContainerNetworkIoUsageTxPacketsAttributeKeyInterface},
 					},
-					ContainerPidsCount: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerPidsCount: ContainerPidsCountConfig{
+						Enabled: true,
 					},
-					ContainerPidsLimit: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerPidsLimit: ContainerPidsLimitConfig{
+						Enabled: true,
 					},
-					ContainerRestarts: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerRestarts: ContainerRestartsConfig{
+						Enabled: true,
 					},
-					ContainerUptime: MetricConfig{
-						Enabled:             true,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerUptime: ContainerUptimeConfig{
+						Enabled: true,
 					},
 				},
 				ResourceAttributes: ResourceAttributesConfig{
@@ -397,360 +289,252 @@ func TestMetricsBuilderConfig(t *testing.T) {
 			name: "none_set",
 			want: MetricsBuilderConfig{
 				Metrics: MetricsConfig{
-					ContainerBlockioIoMergedRecursive: MetricConfig{
+					ContainerBlockioIoMergedRecursive: ContainerBlockioIoMergedRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoMergedRecursiveAttributeKey{ContainerBlockioIoMergedRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoMergedRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoMergedRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoQueuedRecursive: MetricConfig{
+					ContainerBlockioIoQueuedRecursive: ContainerBlockioIoQueuedRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoQueuedRecursiveAttributeKey{ContainerBlockioIoQueuedRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoQueuedRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoQueuedRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoServiceBytesRecursive: MetricConfig{
+					ContainerBlockioIoServiceBytesRecursive: ContainerBlockioIoServiceBytesRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoServiceBytesRecursiveAttributeKey{ContainerBlockioIoServiceBytesRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoServiceBytesRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoServiceBytesRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoServiceTimeRecursive: MetricConfig{
+					ContainerBlockioIoServiceTimeRecursive: ContainerBlockioIoServiceTimeRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoServiceTimeRecursiveAttributeKey{ContainerBlockioIoServiceTimeRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoServiceTimeRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoServiceTimeRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoServicedRecursive: MetricConfig{
+					ContainerBlockioIoServicedRecursive: ContainerBlockioIoServicedRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoServicedRecursiveAttributeKey{ContainerBlockioIoServicedRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoServicedRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoServicedRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoTimeRecursive: MetricConfig{
+					ContainerBlockioIoTimeRecursive: ContainerBlockioIoTimeRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoTimeRecursiveAttributeKey{ContainerBlockioIoTimeRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoTimeRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoTimeRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioIoWaitTimeRecursive: MetricConfig{
+					ContainerBlockioIoWaitTimeRecursive: ContainerBlockioIoWaitTimeRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioIoWaitTimeRecursiveAttributeKey{ContainerBlockioIoWaitTimeRecursiveAttributeKeyDeviceMajor, ContainerBlockioIoWaitTimeRecursiveAttributeKeyDeviceMinor, ContainerBlockioIoWaitTimeRecursiveAttributeKeyOperation},
 					},
-					ContainerBlockioSectorsRecursive: MetricConfig{
+					ContainerBlockioSectorsRecursive: ContainerBlockioSectorsRecursiveConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"device_major", "device_minor", "operation"},
+						EnabledAttributes:   []ContainerBlockioSectorsRecursiveAttributeKey{ContainerBlockioSectorsRecursiveAttributeKeyDeviceMajor, ContainerBlockioSectorsRecursiveAttributeKeyDeviceMinor, ContainerBlockioSectorsRecursiveAttributeKeyOperation},
 					},
-					ContainerCPULimit: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPULimit: ContainerCPULimitConfig{
+						Enabled: false,
 					},
-					ContainerCPULogicalCount: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPULogicalCount: ContainerCPULogicalCountConfig{
+						Enabled: false,
 					},
-					ContainerCPUShares: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPUShares: ContainerCPUSharesConfig{
+						Enabled: false,
 					},
-					ContainerCPUThrottlingDataPeriods: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUThrottlingDataPeriods: ContainerCPUThrottlingDataPeriodsConfig{
+						Enabled: false,
 					},
-					ContainerCPUThrottlingDataThrottledPeriods: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUThrottlingDataThrottledPeriods: ContainerCPUThrottlingDataThrottledPeriodsConfig{
+						Enabled: false,
 					},
-					ContainerCPUThrottlingDataThrottledTime: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUThrottlingDataThrottledTime: ContainerCPUThrottlingDataThrottledTimeConfig{
+						Enabled: false,
 					},
-					ContainerCPUUsageKernelmode: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageKernelmode: ContainerCPUUsageKernelmodeConfig{
+						Enabled: false,
 					},
-					ContainerCPUUsagePercpu: MetricConfig{
+					ContainerCPUUsagePercpu: ContainerCPUUsagePercpuConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"core"},
+						EnabledAttributes:   []ContainerCPUUsagePercpuAttributeKey{ContainerCPUUsagePercpuAttributeKeyCore},
 					},
-					ContainerCPUUsageSystem: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageSystem: ContainerCPUUsageSystemConfig{
+						Enabled: false,
 					},
-					ContainerCPUUsageTotal: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageTotal: ContainerCPUUsageTotalConfig{
+						Enabled: false,
 					},
-					ContainerCPUUsageUsermode: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerCPUUsageUsermode: ContainerCPUUsageUsermodeConfig{
+						Enabled: false,
 					},
-					ContainerCPUUtilization: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerCPUUtilization: ContainerCPUUtilizationConfig{
+						Enabled: false,
 					},
-					ContainerMemoryActiveAnon: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryActiveAnon: ContainerMemoryActiveAnonConfig{
+						Enabled: false,
 					},
-					ContainerMemoryActiveFile: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryActiveFile: ContainerMemoryActiveFileConfig{
+						Enabled: false,
 					},
-					ContainerMemoryAnon: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryAnon: ContainerMemoryAnonConfig{
+						Enabled: false,
 					},
-					ContainerMemoryCache: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryCache: ContainerMemoryCacheConfig{
+						Enabled: false,
 					},
-					ContainerMemoryDirty: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryDirty: ContainerMemoryDirtyConfig{
+						Enabled: false,
 					},
-					ContainerMemoryFails: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryFails: ContainerMemoryFailsConfig{
+						Enabled: false,
 					},
-					ContainerMemoryFile: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryFile: ContainerMemoryFileConfig{
+						Enabled: false,
 					},
-					ContainerMemoryHierarchicalMemoryLimit: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryHierarchicalMemoryLimit: ContainerMemoryHierarchicalMemoryLimitConfig{
+						Enabled: false,
 					},
-					ContainerMemoryHierarchicalMemswLimit: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryHierarchicalMemswLimit: ContainerMemoryHierarchicalMemswLimitConfig{
+						Enabled: false,
 					},
-					ContainerMemoryInactiveAnon: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryInactiveAnon: ContainerMemoryInactiveAnonConfig{
+						Enabled: false,
 					},
-					ContainerMemoryInactiveFile: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryInactiveFile: ContainerMemoryInactiveFileConfig{
+						Enabled: false,
 					},
-					ContainerMemoryMappedFile: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryMappedFile: ContainerMemoryMappedFileConfig{
+						Enabled: false,
 					},
-					ContainerMemoryPercent: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPercent: ContainerMemoryPercentConfig{
+						Enabled: false,
 					},
-					ContainerMemoryPgfault: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgfault: ContainerMemoryPgfaultConfig{
+						Enabled: false,
 					},
-					ContainerMemoryPgmajfault: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgmajfault: ContainerMemoryPgmajfaultConfig{
+						Enabled: false,
 					},
-					ContainerMemoryPgpgin: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgpgin: ContainerMemoryPgpginConfig{
+						Enabled: false,
 					},
-					ContainerMemoryPgpgout: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryPgpgout: ContainerMemoryPgpgoutConfig{
+						Enabled: false,
 					},
-					ContainerMemoryRss: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryRss: ContainerMemoryRssConfig{
+						Enabled: false,
 					},
-					ContainerMemoryRssHuge: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryRssHuge: ContainerMemoryRssHugeConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalActiveAnon: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalActiveAnon: ContainerMemoryTotalActiveAnonConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalActiveFile: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalActiveFile: ContainerMemoryTotalActiveFileConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalCache: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalCache: ContainerMemoryTotalCacheConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalDirty: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalDirty: ContainerMemoryTotalDirtyConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalInactiveAnon: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalInactiveAnon: ContainerMemoryTotalInactiveAnonConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalInactiveFile: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalInactiveFile: ContainerMemoryTotalInactiveFileConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalMappedFile: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalMappedFile: ContainerMemoryTotalMappedFileConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalPgfault: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgfault: ContainerMemoryTotalPgfaultConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalPgmajfault: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgmajfault: ContainerMemoryTotalPgmajfaultConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalPgpgin: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgpgin: ContainerMemoryTotalPgpginConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalPgpgout: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalPgpgout: ContainerMemoryTotalPgpgoutConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalRss: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalRss: ContainerMemoryTotalRssConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalRssHuge: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalRssHuge: ContainerMemoryTotalRssHugeConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalUnevictable: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalUnevictable: ContainerMemoryTotalUnevictableConfig{
+						Enabled: false,
 					},
-					ContainerMemoryTotalWriteback: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryTotalWriteback: ContainerMemoryTotalWritebackConfig{
+						Enabled: false,
 					},
-					ContainerMemoryUnevictable: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUnevictable: ContainerMemoryUnevictableConfig{
+						Enabled: false,
 					},
-					ContainerMemoryUsageLimit: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUsageLimit: ContainerMemoryUsageLimitConfig{
+						Enabled: false,
 					},
-					ContainerMemoryUsageMax: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUsageMax: ContainerMemoryUsageMaxConfig{
+						Enabled: false,
 					},
-					ContainerMemoryUsageTotal: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryUsageTotal: ContainerMemoryUsageTotalConfig{
+						Enabled: false,
 					},
-					ContainerMemoryWriteback: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerMemoryWriteback: ContainerMemoryWritebackConfig{
+						Enabled: false,
 					},
-					ContainerNetworkIoUsageRxBytes: MetricConfig{
+					ContainerNetworkIoUsageRxBytes: ContainerNetworkIoUsageRxBytesConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxBytesAttributeKey{ContainerNetworkIoUsageRxBytesAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageRxDropped: MetricConfig{
+					ContainerNetworkIoUsageRxDropped: ContainerNetworkIoUsageRxDroppedConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxDroppedAttributeKey{ContainerNetworkIoUsageRxDroppedAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageRxErrors: MetricConfig{
+					ContainerNetworkIoUsageRxErrors: ContainerNetworkIoUsageRxErrorsConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxErrorsAttributeKey{ContainerNetworkIoUsageRxErrorsAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageRxPackets: MetricConfig{
+					ContainerNetworkIoUsageRxPackets: ContainerNetworkIoUsageRxPacketsConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageRxPacketsAttributeKey{ContainerNetworkIoUsageRxPacketsAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxBytes: MetricConfig{
+					ContainerNetworkIoUsageTxBytes: ContainerNetworkIoUsageTxBytesConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxBytesAttributeKey{ContainerNetworkIoUsageTxBytesAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxDropped: MetricConfig{
+					ContainerNetworkIoUsageTxDropped: ContainerNetworkIoUsageTxDroppedConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxDroppedAttributeKey{ContainerNetworkIoUsageTxDroppedAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxErrors: MetricConfig{
+					ContainerNetworkIoUsageTxErrors: ContainerNetworkIoUsageTxErrorsConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxErrorsAttributeKey{ContainerNetworkIoUsageTxErrorsAttributeKeyInterface},
 					},
-					ContainerNetworkIoUsageTxPackets: MetricConfig{
+					ContainerNetworkIoUsageTxPackets: ContainerNetworkIoUsageTxPacketsConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{"interface"},
+						EnabledAttributes:   []ContainerNetworkIoUsageTxPacketsAttributeKey{ContainerNetworkIoUsageTxPacketsAttributeKeyInterface},
 					},
-					ContainerPidsCount: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerPidsCount: ContainerPidsCountConfig{
+						Enabled: false,
 					},
-					ContainerPidsLimit: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerPidsLimit: ContainerPidsLimitConfig{
+						Enabled: false,
 					},
-					ContainerRestarts: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []string{},
+					ContainerRestarts: ContainerRestartsConfig{
+						Enabled: false,
 					},
-					ContainerUptime: MetricConfig{
-						Enabled:             false,
-						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []string{},
+					ContainerUptime: ContainerUptimeConfig{
+						Enabled: false,
 					},
 				},
 				ResourceAttributes: ResourceAttributesConfig{
@@ -768,7 +552,7 @@ func TestMetricsBuilderConfig(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			cfg := loadMetricsBuilderConfig(t, tt.name)
-			diff := cmp.Diff(tt.want, cfg, cmpopts.IgnoreUnexported(MetricConfig{}, ResourceAttributeConfig{}))
+			diff := cmp.Diff(tt.want, cfg, cmpopts.IgnoreUnexported(ContainerBlockioIoMergedRecursiveConfig{}, ContainerBlockioIoQueuedRecursiveConfig{}, ContainerBlockioIoServiceBytesRecursiveConfig{}, ContainerBlockioIoServiceTimeRecursiveConfig{}, ContainerBlockioIoServicedRecursiveConfig{}, ContainerBlockioIoTimeRecursiveConfig{}, ContainerBlockioIoWaitTimeRecursiveConfig{}, ContainerBlockioSectorsRecursiveConfig{}, ContainerCPULimitConfig{}, ContainerCPULogicalCountConfig{}, ContainerCPUSharesConfig{}, ContainerCPUThrottlingDataPeriodsConfig{}, ContainerCPUThrottlingDataThrottledPeriodsConfig{}, ContainerCPUThrottlingDataThrottledTimeConfig{}, ContainerCPUUsageKernelmodeConfig{}, ContainerCPUUsagePercpuConfig{}, ContainerCPUUsageSystemConfig{}, ContainerCPUUsageTotalConfig{}, ContainerCPUUsageUsermodeConfig{}, ContainerCPUUtilizationConfig{}, ContainerMemoryActiveAnonConfig{}, ContainerMemoryActiveFileConfig{}, ContainerMemoryAnonConfig{}, ContainerMemoryCacheConfig{}, ContainerMemoryDirtyConfig{}, ContainerMemoryFailsConfig{}, ContainerMemoryFileConfig{}, ContainerMemoryHierarchicalMemoryLimitConfig{}, ContainerMemoryHierarchicalMemswLimitConfig{}, ContainerMemoryInactiveAnonConfig{}, ContainerMemoryInactiveFileConfig{}, ContainerMemoryMappedFileConfig{}, ContainerMemoryPercentConfig{}, ContainerMemoryPgfaultConfig{}, ContainerMemoryPgmajfaultConfig{}, ContainerMemoryPgpginConfig{}, ContainerMemoryPgpgoutConfig{}, ContainerMemoryRssConfig{}, ContainerMemoryRssHugeConfig{}, ContainerMemoryTotalActiveAnonConfig{}, ContainerMemoryTotalActiveFileConfig{}, ContainerMemoryTotalCacheConfig{}, ContainerMemoryTotalDirtyConfig{}, ContainerMemoryTotalInactiveAnonConfig{}, ContainerMemoryTotalInactiveFileConfig{}, ContainerMemoryTotalMappedFileConfig{}, ContainerMemoryTotalPgfaultConfig{}, ContainerMemoryTotalPgmajfaultConfig{}, ContainerMemoryTotalPgpginConfig{}, ContainerMemoryTotalPgpgoutConfig{}, ContainerMemoryTotalRssConfig{}, ContainerMemoryTotalRssHugeConfig{}, ContainerMemoryTotalUnevictableConfig{}, ContainerMemoryTotalWritebackConfig{}, ContainerMemoryUnevictableConfig{}, ContainerMemoryUsageLimitConfig{}, ContainerMemoryUsageMaxConfig{}, ContainerMemoryUsageTotalConfig{}, ContainerMemoryWritebackConfig{}, ContainerNetworkIoUsageRxBytesConfig{}, ContainerNetworkIoUsageRxDroppedConfig{}, ContainerNetworkIoUsageRxErrorsConfig{}, ContainerNetworkIoUsageRxPacketsConfig{}, ContainerNetworkIoUsageTxBytesConfig{}, ContainerNetworkIoUsageTxDroppedConfig{}, ContainerNetworkIoUsageTxErrorsConfig{}, ContainerNetworkIoUsageTxPacketsConfig{}, ContainerPidsCountConfig{}, ContainerPidsLimitConfig{}, ContainerRestartsConfig{}, ContainerUptimeConfig{}, ResourceAttributeConfig{}))
 			require.Emptyf(t, diff, "Config mismatch (-expected +actual):\n%s", diff)
 		})
 	}
