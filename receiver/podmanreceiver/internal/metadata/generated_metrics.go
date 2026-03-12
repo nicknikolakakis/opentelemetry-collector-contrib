@@ -75,9 +75,9 @@ type metricInfo struct {
 }
 
 type metricContainerBlockioIoServiceBytesRecursiveRead struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric                                    // data buffer for generated metric.
+	config   ContainerBlockioIoServiceBytesRecursiveReadConfig // metric config provided by user.
+	capacity int                                               // max observed number of data points added to the metric.
 }
 
 // init fills container.blockio.io_service_bytes_recursive.read metric with initial data.
@@ -116,7 +116,7 @@ func (m *metricContainerBlockioIoServiceBytesRecursiveRead) emit(metrics pmetric
 	}
 }
 
-func newMetricContainerBlockioIoServiceBytesRecursiveRead(cfg MetricConfig) metricContainerBlockioIoServiceBytesRecursiveRead {
+func newMetricContainerBlockioIoServiceBytesRecursiveRead(cfg ContainerBlockioIoServiceBytesRecursiveReadConfig) metricContainerBlockioIoServiceBytesRecursiveRead {
 	m := metricContainerBlockioIoServiceBytesRecursiveRead{config: cfg}
 
 	if cfg.Enabled {
@@ -127,9 +127,9 @@ func newMetricContainerBlockioIoServiceBytesRecursiveRead(cfg MetricConfig) metr
 }
 
 type metricContainerBlockioIoServiceBytesRecursiveWrite struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric                                     // data buffer for generated metric.
+	config   ContainerBlockioIoServiceBytesRecursiveWriteConfig // metric config provided by user.
+	capacity int                                                // max observed number of data points added to the metric.
 }
 
 // init fills container.blockio.io_service_bytes_recursive.write metric with initial data.
@@ -168,7 +168,7 @@ func (m *metricContainerBlockioIoServiceBytesRecursiveWrite) emit(metrics pmetri
 	}
 }
 
-func newMetricContainerBlockioIoServiceBytesRecursiveWrite(cfg MetricConfig) metricContainerBlockioIoServiceBytesRecursiveWrite {
+func newMetricContainerBlockioIoServiceBytesRecursiveWrite(cfg ContainerBlockioIoServiceBytesRecursiveWriteConfig) metricContainerBlockioIoServiceBytesRecursiveWrite {
 	m := metricContainerBlockioIoServiceBytesRecursiveWrite{config: cfg}
 
 	if cfg.Enabled {
@@ -179,9 +179,9 @@ func newMetricContainerBlockioIoServiceBytesRecursiveWrite(cfg MetricConfig) met
 }
 
 type metricContainerCPUPercent struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric            // data buffer for generated metric.
+	config   ContainerCPUPercentConfig // metric config provided by user.
+	capacity int                       // max observed number of data points added to the metric.
 }
 
 // init fills container.cpu.percent metric with initial data.
@@ -218,7 +218,7 @@ func (m *metricContainerCPUPercent) emit(metrics pmetric.MetricSlice) {
 	}
 }
 
-func newMetricContainerCPUPercent(cfg MetricConfig) metricContainerCPUPercent {
+func newMetricContainerCPUPercent(cfg ContainerCPUPercentConfig) metricContainerCPUPercent {
 	m := metricContainerCPUPercent{config: cfg}
 
 	if cfg.Enabled {
@@ -229,10 +229,10 @@ func newMetricContainerCPUPercent(cfg MetricConfig) metricContainerCPUPercent {
 }
 
 type metricContainerCPUUsagePercpu struct {
-	data          pmetric.Metric // data buffer for generated metric.
-	config        MetricConfig   // metric config provided by user.
-	capacity      int            // max observed number of data points added to the metric.
-	aggDataPoints []int64        // slice containing number of aggregated datapoints at each index
+	data          pmetric.Metric                // data buffer for generated metric.
+	config        ContainerCPUUsagePercpuConfig // metric config provided by user.
+	capacity      int                           // max observed number of data points added to the metric.
+	aggDataPoints []int64                       // slice containing number of aggregated datapoints at each index
 }
 
 // init fills container.cpu.usage.percpu metric with initial data.
@@ -255,7 +255,7 @@ func (m *metricContainerCPUUsagePercpu) recordDataPoint(start pcommon.Timestamp,
 	dp := pmetric.NewNumberDataPoint()
 	dp.SetStartTimestamp(start)
 	dp.SetTimestamp(ts)
-	if slices.Contains(m.config.EnabledAttributes, "core") {
+	if slices.Contains(m.config.EnabledAttributes, ContainerCPUUsagePercpuAttributeKeyCore) {
 		dp.Attributes().PutStr("core", coreAttributeValue)
 	}
 
@@ -309,7 +309,7 @@ func (m *metricContainerCPUUsagePercpu) emit(metrics pmetric.MetricSlice) {
 	}
 }
 
-func newMetricContainerCPUUsagePercpu(cfg MetricConfig) metricContainerCPUUsagePercpu {
+func newMetricContainerCPUUsagePercpu(cfg ContainerCPUUsagePercpuConfig) metricContainerCPUUsagePercpu {
 	m := metricContainerCPUUsagePercpu{config: cfg}
 
 	if cfg.Enabled {
@@ -320,9 +320,9 @@ func newMetricContainerCPUUsagePercpu(cfg MetricConfig) metricContainerCPUUsageP
 }
 
 type metricContainerCPUUsageSystem struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric                // data buffer for generated metric.
+	config   ContainerCPUUsageSystemConfig // metric config provided by user.
+	capacity int                           // max observed number of data points added to the metric.
 }
 
 // init fills container.cpu.usage.system metric with initial data.
@@ -361,7 +361,7 @@ func (m *metricContainerCPUUsageSystem) emit(metrics pmetric.MetricSlice) {
 	}
 }
 
-func newMetricContainerCPUUsageSystem(cfg MetricConfig) metricContainerCPUUsageSystem {
+func newMetricContainerCPUUsageSystem(cfg ContainerCPUUsageSystemConfig) metricContainerCPUUsageSystem {
 	m := metricContainerCPUUsageSystem{config: cfg}
 
 	if cfg.Enabled {
@@ -372,9 +372,9 @@ func newMetricContainerCPUUsageSystem(cfg MetricConfig) metricContainerCPUUsageS
 }
 
 type metricContainerCPUUsageTotal struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric               // data buffer for generated metric.
+	config   ContainerCPUUsageTotalConfig // metric config provided by user.
+	capacity int                          // max observed number of data points added to the metric.
 }
 
 // init fills container.cpu.usage.total metric with initial data.
@@ -413,7 +413,7 @@ func (m *metricContainerCPUUsageTotal) emit(metrics pmetric.MetricSlice) {
 	}
 }
 
-func newMetricContainerCPUUsageTotal(cfg MetricConfig) metricContainerCPUUsageTotal {
+func newMetricContainerCPUUsageTotal(cfg ContainerCPUUsageTotalConfig) metricContainerCPUUsageTotal {
 	m := metricContainerCPUUsageTotal{config: cfg}
 
 	if cfg.Enabled {
@@ -424,9 +424,9 @@ func newMetricContainerCPUUsageTotal(cfg MetricConfig) metricContainerCPUUsageTo
 }
 
 type metricContainerMemoryPercent struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric               // data buffer for generated metric.
+	config   ContainerMemoryPercentConfig // metric config provided by user.
+	capacity int                          // max observed number of data points added to the metric.
 }
 
 // init fills container.memory.percent metric with initial data.
@@ -463,7 +463,7 @@ func (m *metricContainerMemoryPercent) emit(metrics pmetric.MetricSlice) {
 	}
 }
 
-func newMetricContainerMemoryPercent(cfg MetricConfig) metricContainerMemoryPercent {
+func newMetricContainerMemoryPercent(cfg ContainerMemoryPercentConfig) metricContainerMemoryPercent {
 	m := metricContainerMemoryPercent{config: cfg}
 
 	if cfg.Enabled {
@@ -474,9 +474,9 @@ func newMetricContainerMemoryPercent(cfg MetricConfig) metricContainerMemoryPerc
 }
 
 type metricContainerMemoryUsageLimit struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric                  // data buffer for generated metric.
+	config   ContainerMemoryUsageLimitConfig // metric config provided by user.
+	capacity int                             // max observed number of data points added to the metric.
 }
 
 // init fills container.memory.usage.limit metric with initial data.
@@ -515,7 +515,7 @@ func (m *metricContainerMemoryUsageLimit) emit(metrics pmetric.MetricSlice) {
 	}
 }
 
-func newMetricContainerMemoryUsageLimit(cfg MetricConfig) metricContainerMemoryUsageLimit {
+func newMetricContainerMemoryUsageLimit(cfg ContainerMemoryUsageLimitConfig) metricContainerMemoryUsageLimit {
 	m := metricContainerMemoryUsageLimit{config: cfg}
 
 	if cfg.Enabled {
@@ -526,9 +526,9 @@ func newMetricContainerMemoryUsageLimit(cfg MetricConfig) metricContainerMemoryU
 }
 
 type metricContainerMemoryUsageTotal struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric                  // data buffer for generated metric.
+	config   ContainerMemoryUsageTotalConfig // metric config provided by user.
+	capacity int                             // max observed number of data points added to the metric.
 }
 
 // init fills container.memory.usage.total metric with initial data.
@@ -567,7 +567,7 @@ func (m *metricContainerMemoryUsageTotal) emit(metrics pmetric.MetricSlice) {
 	}
 }
 
-func newMetricContainerMemoryUsageTotal(cfg MetricConfig) metricContainerMemoryUsageTotal {
+func newMetricContainerMemoryUsageTotal(cfg ContainerMemoryUsageTotalConfig) metricContainerMemoryUsageTotal {
 	m := metricContainerMemoryUsageTotal{config: cfg}
 
 	if cfg.Enabled {
@@ -578,9 +578,9 @@ func newMetricContainerMemoryUsageTotal(cfg MetricConfig) metricContainerMemoryU
 }
 
 type metricContainerNetworkIoUsageRxBytes struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric                       // data buffer for generated metric.
+	config   ContainerNetworkIoUsageRxBytesConfig // metric config provided by user.
+	capacity int                                  // max observed number of data points added to the metric.
 }
 
 // init fills container.network.io.usage.rx_bytes metric with initial data.
@@ -619,7 +619,7 @@ func (m *metricContainerNetworkIoUsageRxBytes) emit(metrics pmetric.MetricSlice)
 	}
 }
 
-func newMetricContainerNetworkIoUsageRxBytes(cfg MetricConfig) metricContainerNetworkIoUsageRxBytes {
+func newMetricContainerNetworkIoUsageRxBytes(cfg ContainerNetworkIoUsageRxBytesConfig) metricContainerNetworkIoUsageRxBytes {
 	m := metricContainerNetworkIoUsageRxBytes{config: cfg}
 
 	if cfg.Enabled {
@@ -630,9 +630,9 @@ func newMetricContainerNetworkIoUsageRxBytes(cfg MetricConfig) metricContainerNe
 }
 
 type metricContainerNetworkIoUsageTxBytes struct {
-	data     pmetric.Metric // data buffer for generated metric.
-	config   MetricConfig   // metric config provided by user.
-	capacity int            // max observed number of data points added to the metric.
+	data     pmetric.Metric                       // data buffer for generated metric.
+	config   ContainerNetworkIoUsageTxBytesConfig // metric config provided by user.
+	capacity int                                  // max observed number of data points added to the metric.
 }
 
 // init fills container.network.io.usage.tx_bytes metric with initial data.
@@ -671,7 +671,7 @@ func (m *metricContainerNetworkIoUsageTxBytes) emit(metrics pmetric.MetricSlice)
 	}
 }
 
-func newMetricContainerNetworkIoUsageTxBytes(cfg MetricConfig) metricContainerNetworkIoUsageTxBytes {
+func newMetricContainerNetworkIoUsageTxBytes(cfg ContainerNetworkIoUsageTxBytesConfig) metricContainerNetworkIoUsageTxBytes {
 	m := metricContainerNetworkIoUsageTxBytes{config: cfg}
 
 	if cfg.Enabled {
