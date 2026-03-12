@@ -36,7 +36,8 @@ func TestValidate(t *testing.T) {
 		{
 			desc: "valid config with no metric settings",
 			cfg: &Config{
-				ControllerConfig: scraperhelper.NewDefaultControllerConfig(),
+				MetricsBuilderConfig: metadata.DefaultMetricsBuilderConfig(),
+				ControllerConfig:     scraperhelper.NewDefaultControllerConfig(),
 			},
 			expectedSuccess: true,
 		},
@@ -67,19 +68,21 @@ func TestValidate(t *testing.T) {
 		{
 			desc: "valid config only datasource and none direct connect settings",
 			cfg: &Config{
-				ControllerConfig: scraperhelper.NewDefaultControllerConfig(),
-				DataSource:       "a connection string",
+				MetricsBuilderConfig: metadata.DefaultMetricsBuilderConfig(),
+				ControllerConfig:     scraperhelper.NewDefaultControllerConfig(),
+				DataSource:           "a connection string",
 			},
 			expectedSuccess: true,
 		},
 		{
 			desc: "valid config with all direct connection settings",
 			cfg: &Config{
-				ControllerConfig: scraperhelper.NewDefaultControllerConfig(),
-				Server:           "0.0.0.0",
-				Username:         "sa",
-				Password:         "password",
-				Port:             1433,
+				MetricsBuilderConfig: metadata.DefaultMetricsBuilderConfig(),
+				ControllerConfig:     scraperhelper.NewDefaultControllerConfig(),
+				Server:               "0.0.0.0",
+				Username:             "sa",
+				Password:             "password",
+				Port:                 1433,
 			},
 			expectedSuccess: true,
 		},
@@ -224,7 +227,7 @@ func TestLoadConfig(t *testing.T) {
 		require.NoError(t, sub.Unmarshal(cfg))
 
 		assert.NoError(t, xconfmap.Validate(cfg))
-		if diff := cmp.Diff(expected, cfg, cmpopts.IgnoreUnexported(Config{}), cmpopts.IgnoreUnexported(metadata.MetricConfig{}), cmpopts.IgnoreUnexported(metadata.EventConfig{}), cmpopts.IgnoreUnexported(metadata.ResourceAttributeConfig{})); diff != "" {
+		if diff := cmp.Diff(expected, cfg, cmpopts.IgnoreUnexported(Config{}), cmpopts.IgnoreUnexported(metadata.SqlserverBatchRequestRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverBatchSQLCompilationRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverBatchSQLRecompilationRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverComputerUptimeConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverCPUCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseBackupOrRestoreRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseExecutionErrorsConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseFullScanRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseIoConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseLatencyConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseOperationsConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseTempdbSpaceConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseTempdbVersionStoreSizeConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDeadlockRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverIndexSearchRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockTimeoutRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockWaitCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockWaitRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockWaitTimeAvgConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLoginRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLogoutRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverMemoryGrantsPendingCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverMemoryUsageConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverOsWaitDurationConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageBufferCacheFreeListStallsRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageBufferCacheHitRatioConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageCheckpointFlushRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageLazyWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageLifeExpectancyConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageLookupRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageOperationRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageSplitRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverProcessesBlockedConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverReplicaDataRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverResourcePoolDiskOperationsConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverResourcePoolDiskThrottledReadRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverResourcePoolDiskThrottledWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTableCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionDelayConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogFlushDataRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogFlushRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogFlushWaitRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogGrowthCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogShrinkCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogUsageConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionMirrorWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverUserConnectionCountConfig{}), cmpopts.IgnoreUnexported(metadata.EventConfig{}), cmpopts.IgnoreUnexported(metadata.ResourceAttributeConfig{})); diff != "" {
 			t.Errorf("Config mismatch (-expected +actual):\n%s", diff)
 		}
 	})
