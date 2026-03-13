@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/confmap/confmaptest"
@@ -227,7 +226,13 @@ func TestLoadConfig(t *testing.T) {
 		require.NoError(t, sub.Unmarshal(cfg))
 
 		assert.NoError(t, xconfmap.Validate(cfg))
-		if diff := cmp.Diff(expected, cfg, cmpopts.IgnoreUnexported(Config{}), cmpopts.IgnoreUnexported(metadata.SqlserverBatchRequestRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverBatchSQLCompilationRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverBatchSQLRecompilationRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverComputerUptimeConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverCPUCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseBackupOrRestoreRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseExecutionErrorsConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseFullScanRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseIoConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseLatencyConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseOperationsConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseTempdbSpaceConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDatabaseTempdbVersionStoreSizeConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverDeadlockRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverIndexSearchRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockTimeoutRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockWaitCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockWaitRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLockWaitTimeAvgConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLoginRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverLogoutRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverMemoryGrantsPendingCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverMemoryUsageConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverOsWaitDurationConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageBufferCacheFreeListStallsRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageBufferCacheHitRatioConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageCheckpointFlushRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageLazyWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageLifeExpectancyConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageLookupRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageOperationRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverPageSplitRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverProcessesBlockedConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverReplicaDataRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverResourcePoolDiskOperationsConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverResourcePoolDiskThrottledReadRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverResourcePoolDiskThrottledWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTableCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionDelayConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogFlushDataRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogFlushRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogFlushWaitRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogGrowthCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogShrinkCountConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionLogUsageConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionMirrorWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverTransactionWriteRateConfig{}), cmpopts.IgnoreUnexported(metadata.SqlserverUserConnectionCountConfig{}), cmpopts.IgnoreUnexported(metadata.EventConfig{}), cmpopts.IgnoreUnexported(metadata.ResourceAttributeConfig{})); diff != "" {
+		if diff := cmp.Diff(expected, cfg, cmp.FilterPath(func(p cmp.Path) bool {
+			if sf, ok := p.Last().(cmp.StructField); ok {
+				name := sf.Name()
+				return len(name) > 0 && name[0] >= 'a' && name[0] <= 'z'
+			}
+			return false
+		}, cmp.Ignore())); diff != "" {
 			t.Errorf("Config mismatch (-expected +actual):\n%s", diff)
 		}
 	})
