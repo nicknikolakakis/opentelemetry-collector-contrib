@@ -229,7 +229,7 @@ func TestLoadConfig(t *testing.T) {
 		if diff := cmp.Diff(expected, cfg, cmp.FilterPath(func(p cmp.Path) bool {
 			if sf, ok := p.Last().(cmp.StructField); ok {
 				name := sf.Name()
-				return len(name) > 0 && name[0] >= 'a' && name[0] <= 'z'
+				return name != "" && name[0] >= 'a' && name[0] <= 'z'
 			}
 			return false
 		}, cmp.Ignore())); diff != "" {
