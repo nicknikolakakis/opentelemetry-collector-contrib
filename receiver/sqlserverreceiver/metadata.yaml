@@ -173,6 +173,7 @@ attributes:
   sqlserver.procedure_execution_count:
     description: Number of times that the procedure has been executed since it was last compiled, reported in delta value.
     type: int
+    requirement_level: recommended
   sqlserver.procedure_id:
     description: The SQL Server ID of the stored procedure, if any
     type: string
