@@ -9,6 +9,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/stretchr/testify/require"
+
 	"go.opentelemetry.io/collector/confmap"
 	"go.opentelemetry.io/collector/confmap/confmaptest"
 )
@@ -26,176 +27,176 @@ func TestMetricsBuilderConfig(t *testing.T) {
 			name: "all_set",
 			want: MetricsBuilderConfig{
 				Metrics: MetricsConfig{
-					SqlserverBatchRequestRate: SqlserverBatchRequestRateConfig{
+					SqlserverBatchRequestRate: SqlserverBatchRequestRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverBatchSQLCompilationRate: SqlserverBatchSQLCompilationRateConfig{
+					SqlserverBatchSQLCompilationRate: SqlserverBatchSQLCompilationRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverBatchSQLRecompilationRate: SqlserverBatchSQLRecompilationRateConfig{
+					SqlserverBatchSQLRecompilationRate: SqlserverBatchSQLRecompilationRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverComputerUptime: SqlserverComputerUptimeConfig{
+					SqlserverComputerUptime: SqlserverComputerUptimeMetricConfig{
 						Enabled: true,
 					},
-					SqlserverCPUCount: SqlserverCPUCountConfig{
+					SqlserverCPUCount: SqlserverCPUCountMetricConfig{
 						Enabled: true,
 					},
-					SqlserverDatabaseBackupOrRestoreRate: SqlserverDatabaseBackupOrRestoreRateConfig{
+					SqlserverDatabaseBackupOrRestoreRate: SqlserverDatabaseBackupOrRestoreRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverDatabaseCount: SqlserverDatabaseCountConfig{
+					SqlserverDatabaseCount: SqlserverDatabaseCountMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverDatabaseCountAttributeKey{SqlserverDatabaseCountAttributeKeyDatabaseStatus},
+						EnabledAttributes:   []SqlserverDatabaseCountMetricAttributeKey{SqlserverDatabaseCountMetricAttributeKeyDatabaseStatus},
 					},
-					SqlserverDatabaseExecutionErrors: SqlserverDatabaseExecutionErrorsConfig{
+					SqlserverDatabaseExecutionErrors: SqlserverDatabaseExecutionErrorsMetricConfig{
 						Enabled: true,
 					},
-					SqlserverDatabaseFullScanRate: SqlserverDatabaseFullScanRateConfig{
+					SqlserverDatabaseFullScanRate: SqlserverDatabaseFullScanRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverDatabaseIo: SqlserverDatabaseIoConfig{
+					SqlserverDatabaseIo: SqlserverDatabaseIoMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseIoAttributeKey{SqlserverDatabaseIoAttributeKeyPhysicalFilename, SqlserverDatabaseIoAttributeKeyLogicalFilename, SqlserverDatabaseIoAttributeKeyFileType, SqlserverDatabaseIoAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverDatabaseIoMetricAttributeKey{SqlserverDatabaseIoMetricAttributeKeyPhysicalFilename, SqlserverDatabaseIoMetricAttributeKeyLogicalFilename, SqlserverDatabaseIoMetricAttributeKeyFileType, SqlserverDatabaseIoMetricAttributeKeyDirection},
 					},
-					SqlserverDatabaseLatency: SqlserverDatabaseLatencyConfig{
+					SqlserverDatabaseLatency: SqlserverDatabaseLatencyMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseLatencyAttributeKey{SqlserverDatabaseLatencyAttributeKeyPhysicalFilename, SqlserverDatabaseLatencyAttributeKeyLogicalFilename, SqlserverDatabaseLatencyAttributeKeyFileType, SqlserverDatabaseLatencyAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverDatabaseLatencyMetricAttributeKey{SqlserverDatabaseLatencyMetricAttributeKeyPhysicalFilename, SqlserverDatabaseLatencyMetricAttributeKeyLogicalFilename, SqlserverDatabaseLatencyMetricAttributeKeyFileType, SqlserverDatabaseLatencyMetricAttributeKeyDirection},
 					},
-					SqlserverDatabaseOperations: SqlserverDatabaseOperationsConfig{
+					SqlserverDatabaseOperations: SqlserverDatabaseOperationsMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseOperationsAttributeKey{SqlserverDatabaseOperationsAttributeKeyPhysicalFilename, SqlserverDatabaseOperationsAttributeKeyLogicalFilename, SqlserverDatabaseOperationsAttributeKeyFileType, SqlserverDatabaseOperationsAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverDatabaseOperationsMetricAttributeKey{SqlserverDatabaseOperationsMetricAttributeKeyPhysicalFilename, SqlserverDatabaseOperationsMetricAttributeKeyLogicalFilename, SqlserverDatabaseOperationsMetricAttributeKeyFileType, SqlserverDatabaseOperationsMetricAttributeKeyDirection},
 					},
-					SqlserverDatabaseTempdbSpace: SqlserverDatabaseTempdbSpaceConfig{
+					SqlserverDatabaseTempdbSpace: SqlserverDatabaseTempdbSpaceMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseTempdbSpaceAttributeKey{SqlserverDatabaseTempdbSpaceAttributeKeyTempdbState},
+						EnabledAttributes:   []SqlserverDatabaseTempdbSpaceMetricAttributeKey{SqlserverDatabaseTempdbSpaceMetricAttributeKeyTempdbState},
 					},
-					SqlserverDatabaseTempdbVersionStoreSize: SqlserverDatabaseTempdbVersionStoreSizeConfig{
+					SqlserverDatabaseTempdbVersionStoreSize: SqlserverDatabaseTempdbVersionStoreSizeMetricConfig{
 						Enabled: true,
 					},
-					SqlserverDeadlockRate: SqlserverDeadlockRateConfig{
+					SqlserverDeadlockRate: SqlserverDeadlockRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverIndexSearchRate: SqlserverIndexSearchRateConfig{
+					SqlserverIndexSearchRate: SqlserverIndexSearchRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverLockTimeoutRate: SqlserverLockTimeoutRateConfig{
+					SqlserverLockTimeoutRate: SqlserverLockTimeoutRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverLockWaitCount: SqlserverLockWaitCountConfig{
+					SqlserverLockWaitCount: SqlserverLockWaitCountMetricConfig{
 						Enabled: true,
 					},
-					SqlserverLockWaitRate: SqlserverLockWaitRateConfig{
+					SqlserverLockWaitRate: SqlserverLockWaitRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverLockWaitTimeAvg: SqlserverLockWaitTimeAvgConfig{
+					SqlserverLockWaitTimeAvg: SqlserverLockWaitTimeAvgMetricConfig{
 						Enabled: true,
 					},
-					SqlserverLoginRate: SqlserverLoginRateConfig{
+					SqlserverLoginRate: SqlserverLoginRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverLogoutRate: SqlserverLogoutRateConfig{
+					SqlserverLogoutRate: SqlserverLogoutRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverMemoryGrantsPendingCount: SqlserverMemoryGrantsPendingCountConfig{
+					SqlserverMemoryGrantsPendingCount: SqlserverMemoryGrantsPendingCountMetricConfig{
 						Enabled: true,
 					},
-					SqlserverMemoryUsage: SqlserverMemoryUsageConfig{
+					SqlserverMemoryUsage: SqlserverMemoryUsageMetricConfig{
 						Enabled: true,
 					},
-					SqlserverOsWaitDuration: SqlserverOsWaitDurationConfig{
+					SqlserverOsWaitDuration: SqlserverOsWaitDurationMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverOsWaitDurationAttributeKey{SqlserverOsWaitDurationAttributeKeyWaitCategory, SqlserverOsWaitDurationAttributeKeyWaitType},
+						EnabledAttributes:   []SqlserverOsWaitDurationMetricAttributeKey{SqlserverOsWaitDurationMetricAttributeKeyWaitCategory, SqlserverOsWaitDurationMetricAttributeKeyWaitType},
 					},
-					SqlserverPageBufferCacheFreeListStallsRate: SqlserverPageBufferCacheFreeListStallsRateConfig{
+					SqlserverPageBufferCacheFreeListStallsRate: SqlserverPageBufferCacheFreeListStallsRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverPageBufferCacheHitRatio: SqlserverPageBufferCacheHitRatioConfig{
+					SqlserverPageBufferCacheHitRatio: SqlserverPageBufferCacheHitRatioMetricConfig{
 						Enabled: true,
 					},
-					SqlserverPageCheckpointFlushRate: SqlserverPageCheckpointFlushRateConfig{
+					SqlserverPageCheckpointFlushRate: SqlserverPageCheckpointFlushRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverPageLazyWriteRate: SqlserverPageLazyWriteRateConfig{
+					SqlserverPageLazyWriteRate: SqlserverPageLazyWriteRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverPageLifeExpectancy: SqlserverPageLifeExpectancyConfig{
+					SqlserverPageLifeExpectancy: SqlserverPageLifeExpectancyMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverPageLifeExpectancyAttributeKey{SqlserverPageLifeExpectancyAttributeKeyPerformanceCounterObjectName},
+						EnabledAttributes:   []SqlserverPageLifeExpectancyMetricAttributeKey{SqlserverPageLifeExpectancyMetricAttributeKeyPerformanceCounterObjectName},
 					},
-					SqlserverPageLookupRate: SqlserverPageLookupRateConfig{
+					SqlserverPageLookupRate: SqlserverPageLookupRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverPageOperationRate: SqlserverPageOperationRateConfig{
+					SqlserverPageOperationRate: SqlserverPageOperationRateMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverPageOperationRateAttributeKey{SqlserverPageOperationRateAttributeKeyPageOperations},
+						EnabledAttributes:   []SqlserverPageOperationRateMetricAttributeKey{SqlserverPageOperationRateMetricAttributeKeyPageOperations},
 					},
-					SqlserverPageSplitRate: SqlserverPageSplitRateConfig{
+					SqlserverPageSplitRate: SqlserverPageSplitRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverProcessesBlocked: SqlserverProcessesBlockedConfig{
+					SqlserverProcessesBlocked: SqlserverProcessesBlockedMetricConfig{
 						Enabled: true,
 					},
-					SqlserverReplicaDataRate: SqlserverReplicaDataRateConfig{
+					SqlserverReplicaDataRate: SqlserverReplicaDataRateMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverReplicaDataRateAttributeKey{SqlserverReplicaDataRateAttributeKeyReplicaDirection},
+						EnabledAttributes:   []SqlserverReplicaDataRateMetricAttributeKey{SqlserverReplicaDataRateMetricAttributeKeyReplicaDirection},
 					},
-					SqlserverResourcePoolDiskOperations: SqlserverResourcePoolDiskOperationsConfig{
+					SqlserverResourcePoolDiskOperations: SqlserverResourcePoolDiskOperationsMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverResourcePoolDiskOperationsAttributeKey{SqlserverResourcePoolDiskOperationsAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverResourcePoolDiskOperationsMetricAttributeKey{SqlserverResourcePoolDiskOperationsMetricAttributeKeyDirection},
 					},
-					SqlserverResourcePoolDiskThrottledReadRate: SqlserverResourcePoolDiskThrottledReadRateConfig{
+					SqlserverResourcePoolDiskThrottledReadRate: SqlserverResourcePoolDiskThrottledReadRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverResourcePoolDiskThrottledWriteRate: SqlserverResourcePoolDiskThrottledWriteRateConfig{
+					SqlserverResourcePoolDiskThrottledWriteRate: SqlserverResourcePoolDiskThrottledWriteRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTableCount: SqlserverTableCountConfig{
+					SqlserverTableCount: SqlserverTableCountMetricConfig{
 						Enabled:             true,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverTableCountAttributeKey{SqlserverTableCountAttributeKeyTableState, SqlserverTableCountAttributeKeyTableStatus},
+						EnabledAttributes:   []SqlserverTableCountMetricAttributeKey{SqlserverTableCountMetricAttributeKeyTableState, SqlserverTableCountMetricAttributeKeyTableStatus},
 					},
-					SqlserverTransactionDelay: SqlserverTransactionDelayConfig{
+					SqlserverTransactionDelay: SqlserverTransactionDelayMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionMirrorWriteRate: SqlserverTransactionMirrorWriteRateConfig{
+					SqlserverTransactionMirrorWriteRate: SqlserverTransactionMirrorWriteRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionRate: SqlserverTransactionRateConfig{
+					SqlserverTransactionRate: SqlserverTransactionRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionWriteRate: SqlserverTransactionWriteRateConfig{
+					SqlserverTransactionWriteRate: SqlserverTransactionWriteRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionLogFlushDataRate: SqlserverTransactionLogFlushDataRateConfig{
+					SqlserverTransactionLogFlushDataRate: SqlserverTransactionLogFlushDataRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionLogFlushRate: SqlserverTransactionLogFlushRateConfig{
+					SqlserverTransactionLogFlushRate: SqlserverTransactionLogFlushRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionLogFlushWaitRate: SqlserverTransactionLogFlushWaitRateConfig{
+					SqlserverTransactionLogFlushWaitRate: SqlserverTransactionLogFlushWaitRateMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionLogGrowthCount: SqlserverTransactionLogGrowthCountConfig{
+					SqlserverTransactionLogGrowthCount: SqlserverTransactionLogGrowthCountMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionLogShrinkCount: SqlserverTransactionLogShrinkCountConfig{
+					SqlserverTransactionLogShrinkCount: SqlserverTransactionLogShrinkCountMetricConfig{
 						Enabled: true,
 					},
-					SqlserverTransactionLogUsage: SqlserverTransactionLogUsageConfig{
+					SqlserverTransactionLogUsage: SqlserverTransactionLogUsageMetricConfig{
 						Enabled: true,
 					},
-					SqlserverUserConnectionCount: SqlserverUserConnectionCountConfig{
+					SqlserverUserConnectionCount: SqlserverUserConnectionCountMetricConfig{
 						Enabled: true,
 					},
 				},
@@ -214,176 +215,176 @@ func TestMetricsBuilderConfig(t *testing.T) {
 			name: "none_set",
 			want: MetricsBuilderConfig{
 				Metrics: MetricsConfig{
-					SqlserverBatchRequestRate: SqlserverBatchRequestRateConfig{
+					SqlserverBatchRequestRate: SqlserverBatchRequestRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverBatchSQLCompilationRate: SqlserverBatchSQLCompilationRateConfig{
+					SqlserverBatchSQLCompilationRate: SqlserverBatchSQLCompilationRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverBatchSQLRecompilationRate: SqlserverBatchSQLRecompilationRateConfig{
+					SqlserverBatchSQLRecompilationRate: SqlserverBatchSQLRecompilationRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverComputerUptime: SqlserverComputerUptimeConfig{
+					SqlserverComputerUptime: SqlserverComputerUptimeMetricConfig{
 						Enabled: false,
 					},
-					SqlserverCPUCount: SqlserverCPUCountConfig{
+					SqlserverCPUCount: SqlserverCPUCountMetricConfig{
 						Enabled: false,
 					},
-					SqlserverDatabaseBackupOrRestoreRate: SqlserverDatabaseBackupOrRestoreRateConfig{
+					SqlserverDatabaseBackupOrRestoreRate: SqlserverDatabaseBackupOrRestoreRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverDatabaseCount: SqlserverDatabaseCountConfig{
+					SqlserverDatabaseCount: SqlserverDatabaseCountMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverDatabaseCountAttributeKey{SqlserverDatabaseCountAttributeKeyDatabaseStatus},
+						EnabledAttributes:   []SqlserverDatabaseCountMetricAttributeKey{SqlserverDatabaseCountMetricAttributeKeyDatabaseStatus},
 					},
-					SqlserverDatabaseExecutionErrors: SqlserverDatabaseExecutionErrorsConfig{
+					SqlserverDatabaseExecutionErrors: SqlserverDatabaseExecutionErrorsMetricConfig{
 						Enabled: false,
 					},
-					SqlserverDatabaseFullScanRate: SqlserverDatabaseFullScanRateConfig{
+					SqlserverDatabaseFullScanRate: SqlserverDatabaseFullScanRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverDatabaseIo: SqlserverDatabaseIoConfig{
+					SqlserverDatabaseIo: SqlserverDatabaseIoMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseIoAttributeKey{SqlserverDatabaseIoAttributeKeyPhysicalFilename, SqlserverDatabaseIoAttributeKeyLogicalFilename, SqlserverDatabaseIoAttributeKeyFileType, SqlserverDatabaseIoAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverDatabaseIoMetricAttributeKey{SqlserverDatabaseIoMetricAttributeKeyPhysicalFilename, SqlserverDatabaseIoMetricAttributeKeyLogicalFilename, SqlserverDatabaseIoMetricAttributeKeyFileType, SqlserverDatabaseIoMetricAttributeKeyDirection},
 					},
-					SqlserverDatabaseLatency: SqlserverDatabaseLatencyConfig{
+					SqlserverDatabaseLatency: SqlserverDatabaseLatencyMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseLatencyAttributeKey{SqlserverDatabaseLatencyAttributeKeyPhysicalFilename, SqlserverDatabaseLatencyAttributeKeyLogicalFilename, SqlserverDatabaseLatencyAttributeKeyFileType, SqlserverDatabaseLatencyAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverDatabaseLatencyMetricAttributeKey{SqlserverDatabaseLatencyMetricAttributeKeyPhysicalFilename, SqlserverDatabaseLatencyMetricAttributeKeyLogicalFilename, SqlserverDatabaseLatencyMetricAttributeKeyFileType, SqlserverDatabaseLatencyMetricAttributeKeyDirection},
 					},
-					SqlserverDatabaseOperations: SqlserverDatabaseOperationsConfig{
+					SqlserverDatabaseOperations: SqlserverDatabaseOperationsMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseOperationsAttributeKey{SqlserverDatabaseOperationsAttributeKeyPhysicalFilename, SqlserverDatabaseOperationsAttributeKeyLogicalFilename, SqlserverDatabaseOperationsAttributeKeyFileType, SqlserverDatabaseOperationsAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverDatabaseOperationsMetricAttributeKey{SqlserverDatabaseOperationsMetricAttributeKeyPhysicalFilename, SqlserverDatabaseOperationsMetricAttributeKeyLogicalFilename, SqlserverDatabaseOperationsMetricAttributeKeyFileType, SqlserverDatabaseOperationsMetricAttributeKeyDirection},
 					},
-					SqlserverDatabaseTempdbSpace: SqlserverDatabaseTempdbSpaceConfig{
+					SqlserverDatabaseTempdbSpace: SqlserverDatabaseTempdbSpaceMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverDatabaseTempdbSpaceAttributeKey{SqlserverDatabaseTempdbSpaceAttributeKeyTempdbState},
+						EnabledAttributes:   []SqlserverDatabaseTempdbSpaceMetricAttributeKey{SqlserverDatabaseTempdbSpaceMetricAttributeKeyTempdbState},
 					},
-					SqlserverDatabaseTempdbVersionStoreSize: SqlserverDatabaseTempdbVersionStoreSizeConfig{
+					SqlserverDatabaseTempdbVersionStoreSize: SqlserverDatabaseTempdbVersionStoreSizeMetricConfig{
 						Enabled: false,
 					},
-					SqlserverDeadlockRate: SqlserverDeadlockRateConfig{
+					SqlserverDeadlockRate: SqlserverDeadlockRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverIndexSearchRate: SqlserverIndexSearchRateConfig{
+					SqlserverIndexSearchRate: SqlserverIndexSearchRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverLockTimeoutRate: SqlserverLockTimeoutRateConfig{
+					SqlserverLockTimeoutRate: SqlserverLockTimeoutRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverLockWaitCount: SqlserverLockWaitCountConfig{
+					SqlserverLockWaitCount: SqlserverLockWaitCountMetricConfig{
 						Enabled: false,
 					},
-					SqlserverLockWaitRate: SqlserverLockWaitRateConfig{
+					SqlserverLockWaitRate: SqlserverLockWaitRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverLockWaitTimeAvg: SqlserverLockWaitTimeAvgConfig{
+					SqlserverLockWaitTimeAvg: SqlserverLockWaitTimeAvgMetricConfig{
 						Enabled: false,
 					},
-					SqlserverLoginRate: SqlserverLoginRateConfig{
+					SqlserverLoginRate: SqlserverLoginRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverLogoutRate: SqlserverLogoutRateConfig{
+					SqlserverLogoutRate: SqlserverLogoutRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverMemoryGrantsPendingCount: SqlserverMemoryGrantsPendingCountConfig{
+					SqlserverMemoryGrantsPendingCount: SqlserverMemoryGrantsPendingCountMetricConfig{
 						Enabled: false,
 					},
-					SqlserverMemoryUsage: SqlserverMemoryUsageConfig{
+					SqlserverMemoryUsage: SqlserverMemoryUsageMetricConfig{
 						Enabled: false,
 					},
-					SqlserverOsWaitDuration: SqlserverOsWaitDurationConfig{
+					SqlserverOsWaitDuration: SqlserverOsWaitDurationMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverOsWaitDurationAttributeKey{SqlserverOsWaitDurationAttributeKeyWaitCategory, SqlserverOsWaitDurationAttributeKeyWaitType},
+						EnabledAttributes:   []SqlserverOsWaitDurationMetricAttributeKey{SqlserverOsWaitDurationMetricAttributeKeyWaitCategory, SqlserverOsWaitDurationMetricAttributeKeyWaitType},
 					},
-					SqlserverPageBufferCacheFreeListStallsRate: SqlserverPageBufferCacheFreeListStallsRateConfig{
+					SqlserverPageBufferCacheFreeListStallsRate: SqlserverPageBufferCacheFreeListStallsRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverPageBufferCacheHitRatio: SqlserverPageBufferCacheHitRatioConfig{
+					SqlserverPageBufferCacheHitRatio: SqlserverPageBufferCacheHitRatioMetricConfig{
 						Enabled: false,
 					},
-					SqlserverPageCheckpointFlushRate: SqlserverPageCheckpointFlushRateConfig{
+					SqlserverPageCheckpointFlushRate: SqlserverPageCheckpointFlushRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverPageLazyWriteRate: SqlserverPageLazyWriteRateConfig{
+					SqlserverPageLazyWriteRate: SqlserverPageLazyWriteRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverPageLifeExpectancy: SqlserverPageLifeExpectancyConfig{
+					SqlserverPageLifeExpectancy: SqlserverPageLifeExpectancyMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverPageLifeExpectancyAttributeKey{SqlserverPageLifeExpectancyAttributeKeyPerformanceCounterObjectName},
+						EnabledAttributes:   []SqlserverPageLifeExpectancyMetricAttributeKey{SqlserverPageLifeExpectancyMetricAttributeKeyPerformanceCounterObjectName},
 					},
-					SqlserverPageLookupRate: SqlserverPageLookupRateConfig{
+					SqlserverPageLookupRate: SqlserverPageLookupRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverPageOperationRate: SqlserverPageOperationRateConfig{
+					SqlserverPageOperationRate: SqlserverPageOperationRateMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverPageOperationRateAttributeKey{SqlserverPageOperationRateAttributeKeyPageOperations},
+						EnabledAttributes:   []SqlserverPageOperationRateMetricAttributeKey{SqlserverPageOperationRateMetricAttributeKeyPageOperations},
 					},
-					SqlserverPageSplitRate: SqlserverPageSplitRateConfig{
+					SqlserverPageSplitRate: SqlserverPageSplitRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverProcessesBlocked: SqlserverProcessesBlockedConfig{
+					SqlserverProcessesBlocked: SqlserverProcessesBlockedMetricConfig{
 						Enabled: false,
 					},
-					SqlserverReplicaDataRate: SqlserverReplicaDataRateConfig{
+					SqlserverReplicaDataRate: SqlserverReplicaDataRateMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverReplicaDataRateAttributeKey{SqlserverReplicaDataRateAttributeKeyReplicaDirection},
+						EnabledAttributes:   []SqlserverReplicaDataRateMetricAttributeKey{SqlserverReplicaDataRateMetricAttributeKeyReplicaDirection},
 					},
-					SqlserverResourcePoolDiskOperations: SqlserverResourcePoolDiskOperationsConfig{
+					SqlserverResourcePoolDiskOperations: SqlserverResourcePoolDiskOperationsMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategyAvg,
-						EnabledAttributes:   []SqlserverResourcePoolDiskOperationsAttributeKey{SqlserverResourcePoolDiskOperationsAttributeKeyDirection},
+						EnabledAttributes:   []SqlserverResourcePoolDiskOperationsMetricAttributeKey{SqlserverResourcePoolDiskOperationsMetricAttributeKeyDirection},
 					},
-					SqlserverResourcePoolDiskThrottledReadRate: SqlserverResourcePoolDiskThrottledReadRateConfig{
+					SqlserverResourcePoolDiskThrottledReadRate: SqlserverResourcePoolDiskThrottledReadRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverResourcePoolDiskThrottledWriteRate: SqlserverResourcePoolDiskThrottledWriteRateConfig{
+					SqlserverResourcePoolDiskThrottledWriteRate: SqlserverResourcePoolDiskThrottledWriteRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTableCount: SqlserverTableCountConfig{
+					SqlserverTableCount: SqlserverTableCountMetricConfig{
 						Enabled:             false,
 						AggregationStrategy: AggregationStrategySum,
-						EnabledAttributes:   []SqlserverTableCountAttributeKey{SqlserverTableCountAttributeKeyTableState, SqlserverTableCountAttributeKeyTableStatus},
+						EnabledAttributes:   []SqlserverTableCountMetricAttributeKey{SqlserverTableCountMetricAttributeKeyTableState, SqlserverTableCountMetricAttributeKeyTableStatus},
 					},
-					SqlserverTransactionDelay: SqlserverTransactionDelayConfig{
+					SqlserverTransactionDelay: SqlserverTransactionDelayMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionMirrorWriteRate: SqlserverTransactionMirrorWriteRateConfig{
+					SqlserverTransactionMirrorWriteRate: SqlserverTransactionMirrorWriteRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionRate: SqlserverTransactionRateConfig{
+					SqlserverTransactionRate: SqlserverTransactionRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionWriteRate: SqlserverTransactionWriteRateConfig{
+					SqlserverTransactionWriteRate: SqlserverTransactionWriteRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionLogFlushDataRate: SqlserverTransactionLogFlushDataRateConfig{
+					SqlserverTransactionLogFlushDataRate: SqlserverTransactionLogFlushDataRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionLogFlushRate: SqlserverTransactionLogFlushRateConfig{
+					SqlserverTransactionLogFlushRate: SqlserverTransactionLogFlushRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionLogFlushWaitRate: SqlserverTransactionLogFlushWaitRateConfig{
+					SqlserverTransactionLogFlushWaitRate: SqlserverTransactionLogFlushWaitRateMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionLogGrowthCount: SqlserverTransactionLogGrowthCountConfig{
+					SqlserverTransactionLogGrowthCount: SqlserverTransactionLogGrowthCountMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionLogShrinkCount: SqlserverTransactionLogShrinkCountConfig{
+					SqlserverTransactionLogShrinkCount: SqlserverTransactionLogShrinkCountMetricConfig{
 						Enabled: false,
 					},
-					SqlserverTransactionLogUsage: SqlserverTransactionLogUsageConfig{
+					SqlserverTransactionLogUsage: SqlserverTransactionLogUsageMetricConfig{
 						Enabled: false,
 					},
-					SqlserverUserConnectionCount: SqlserverUserConnectionCountConfig{
+					SqlserverUserConnectionCount: SqlserverUserConnectionCountMetricConfig{
 						Enabled: false,
 					},
 				},
@@ -402,7 +403,7 @@ func TestMetricsBuilderConfig(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			cfg := loadMetricsBuilderConfig(t, tt.name)
-			diff := cmp.Diff(tt.want, cfg, cmpopts.IgnoreUnexported(SqlserverBatchRequestRateConfig{}, SqlserverBatchSQLCompilationRateConfig{}, SqlserverBatchSQLRecompilationRateConfig{}, SqlserverComputerUptimeConfig{}, SqlserverCPUCountConfig{}, SqlserverDatabaseBackupOrRestoreRateConfig{}, SqlserverDatabaseCountConfig{}, SqlserverDatabaseExecutionErrorsConfig{}, SqlserverDatabaseFullScanRateConfig{}, SqlserverDatabaseIoConfig{}, SqlserverDatabaseLatencyConfig{}, SqlserverDatabaseOperationsConfig{}, SqlserverDatabaseTempdbSpaceConfig{}, SqlserverDatabaseTempdbVersionStoreSizeConfig{}, SqlserverDeadlockRateConfig{}, SqlserverIndexSearchRateConfig{}, SqlserverLockTimeoutRateConfig{}, SqlserverLockWaitCountConfig{}, SqlserverLockWaitRateConfig{}, SqlserverLockWaitTimeAvgConfig{}, SqlserverLoginRateConfig{}, SqlserverLogoutRateConfig{}, SqlserverMemoryGrantsPendingCountConfig{}, SqlserverMemoryUsageConfig{}, SqlserverOsWaitDurationConfig{}, SqlserverPageBufferCacheFreeListStallsRateConfig{}, SqlserverPageBufferCacheHitRatioConfig{}, SqlserverPageCheckpointFlushRateConfig{}, SqlserverPageLazyWriteRateConfig{}, SqlserverPageLifeExpectancyConfig{}, SqlserverPageLookupRateConfig{}, SqlserverPageOperationRateConfig{}, SqlserverPageSplitRateConfig{}, SqlserverProcessesBlockedConfig{}, SqlserverReplicaDataRateConfig{}, SqlserverResourcePoolDiskOperationsConfig{}, SqlserverResourcePoolDiskThrottledReadRateConfig{}, SqlserverResourcePoolDiskThrottledWriteRateConfig{}, SqlserverTableCountConfig{}, SqlserverTransactionDelayConfig{}, SqlserverTransactionMirrorWriteRateConfig{}, SqlserverTransactionRateConfig{}, SqlserverTransactionWriteRateConfig{}, SqlserverTransactionLogFlushDataRateConfig{}, SqlserverTransactionLogFlushRateConfig{}, SqlserverTransactionLogFlushWaitRateConfig{}, SqlserverTransactionLogGrowthCountConfig{}, SqlserverTransactionLogShrinkCountConfig{}, SqlserverTransactionLogUsageConfig{}, SqlserverUserConnectionCountConfig{}, ResourceAttributeConfig{}))
+			diff := cmp.Diff(tt.want, cfg, cmpopts.IgnoreUnexported(SqlserverBatchRequestRateMetricConfig{}, SqlserverBatchSQLCompilationRateMetricConfig{}, SqlserverBatchSQLRecompilationRateMetricConfig{}, SqlserverComputerUptimeMetricConfig{}, SqlserverCPUCountMetricConfig{}, SqlserverDatabaseBackupOrRestoreRateMetricConfig{}, SqlserverDatabaseCountMetricConfig{}, SqlserverDatabaseExecutionErrorsMetricConfig{}, SqlserverDatabaseFullScanRateMetricConfig{}, SqlserverDatabaseIoMetricConfig{}, SqlserverDatabaseLatencyMetricConfig{}, SqlserverDatabaseOperationsMetricConfig{}, SqlserverDatabaseTempdbSpaceMetricConfig{}, SqlserverDatabaseTempdbVersionStoreSizeMetricConfig{}, SqlserverDeadlockRateMetricConfig{}, SqlserverIndexSearchRateMetricConfig{}, SqlserverLockTimeoutRateMetricConfig{}, SqlserverLockWaitCountMetricConfig{}, SqlserverLockWaitRateMetricConfig{}, SqlserverLockWaitTimeAvgMetricConfig{}, SqlserverLoginRateMetricConfig{}, SqlserverLogoutRateMetricConfig{}, SqlserverMemoryGrantsPendingCountMetricConfig{}, SqlserverMemoryUsageMetricConfig{}, SqlserverOsWaitDurationMetricConfig{}, SqlserverPageBufferCacheFreeListStallsRateMetricConfig{}, SqlserverPageBufferCacheHitRatioMetricConfig{}, SqlserverPageCheckpointFlushRateMetricConfig{}, SqlserverPageLazyWriteRateMetricConfig{}, SqlserverPageLifeExpectancyMetricConfig{}, SqlserverPageLookupRateMetricConfig{}, SqlserverPageOperationRateMetricConfig{}, SqlserverPageSplitRateMetricConfig{}, SqlserverProcessesBlockedMetricConfig{}, SqlserverReplicaDataRateMetricConfig{}, SqlserverResourcePoolDiskOperationsMetricConfig{}, SqlserverResourcePoolDiskThrottledReadRateMetricConfig{}, SqlserverResourcePoolDiskThrottledWriteRateMetricConfig{}, SqlserverTableCountMetricConfig{}, SqlserverTransactionDelayMetricConfig{}, SqlserverTransactionMirrorWriteRateMetricConfig{}, SqlserverTransactionRateMetricConfig{}, SqlserverTransactionWriteRateMetricConfig{}, SqlserverTransactionLogFlushDataRateMetricConfig{}, SqlserverTransactionLogFlushRateMetricConfig{}, SqlserverTransactionLogFlushWaitRateMetricConfig{}, SqlserverTransactionLogGrowthCountMetricConfig{}, SqlserverTransactionLogShrinkCountMetricConfig{}, SqlserverTransactionLogUsageMetricConfig{}, SqlserverUserConnectionCountMetricConfig{}, ResourceAttributeConfig{}))
 			require.Emptyf(t, diff, "Config mismatch (-expected +actual):\n%s", diff)
 		})
 	}
