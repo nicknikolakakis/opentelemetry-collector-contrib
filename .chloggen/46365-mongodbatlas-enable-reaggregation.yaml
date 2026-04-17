@@ -4,7 +4,7 @@
 change_type: 'enhancement'
 
 # The name of the component, or a single word describing the area of concern, (e.g. receiver/filelog)
-component: receiver/mongodbatlas
+component: receiver/mongodb_atlas
 
 # A brief description of the change.  Surround your text with quotes ("") if it needs to start with a backtick (`).
 note: Enables dynamic metric reaggregation in the MongoDB Atlas receiver. This does not break existing configuration files.
